@@ -99,7 +99,7 @@ function getFiles() {
 
   if(FOLDER_REPLAY){
     let request = gapi.client.drive.files.list({
-      q : "mimeType : 'application/vnd.google-apps.spreadsheet' and sharedWithMe : true and"+ FOLDER_REPLAY.getId()+" in parents"
+      q : "mimeType : 'application/vnd.google-apps.spreadsheet' and sharedWithMe : true and "+ FOLDER_REPLAY.getId()+" in parents"
     });
 
     request.execute(reponseFichier);
