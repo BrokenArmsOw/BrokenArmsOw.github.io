@@ -73,7 +73,7 @@ function handleSignoutClick(event) {
 
 function reponseDossier(resp){
   if (!resp.error) {
-      FOLDER_REPLAY = resp.items;
+      FOLDER_REPLAY = resp.files[0];
   }else{
       showErrorMessage("Erreur: " + resp.error.message);
   }
