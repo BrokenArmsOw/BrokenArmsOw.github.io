@@ -17,7 +17,7 @@
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Broken Arms - Overwatch Team FR</a>
+            <a class="navbar-brand" href="index.html"> <p class="d-none d-sm-block">Broken Arms - Overwatch Team FR</p> <p class="d-sm-none">Broken Arms</p></a>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
@@ -26,13 +26,15 @@
                 <a class="nav-item nav-link" href="replay.html">Replay</a>
                 <a class="nav-item nav-link" href="naming.html">Naming</a>
                 <a class="nav-item nav-link" href="strat.html">Strategie</a>
+                <button id="login-button" class="nav-item nav-link">Connexion</button>
+                <button id="signout-button" class="nav-item nav-link">Deconnexion</button>
               </div>
             </div>
           </nav>
         </header>
         <div class="row">
             <article class="col-sm-12">
-                Article
+              <pre id="content"></pre>
             </article>
         </div>
 
@@ -42,6 +44,8 @@
       </div>
 
       <!-- Javascript !-->
+    <script src="js/main.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>  
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
