@@ -98,11 +98,11 @@ function getFiles() {
   request.execute(reponseDossier);
 
   if(FOLDER_REPLAY){
-    let request = gapi.client.drive.files.list({
-      q : "mimeType : 'application/vnd.google-apps.spreadsheet' and sharedWithMe : true and "+ FOLDER_REPLAY.id+" in parents"
+    let requestfile = gapi.client.drive.files.list({
+      q : "mimeType = 'application/vnd.google-apps.spreadsheet' and sharedWithMe = true and "+ FOLDER_REPLAY.id+" in parents"
     });
 
-    request.execute(reponseFichier);
+    requestfile.execute(reponseFichier);
 
     for(let index = 0;index < FILES_REPLAY.length;index++){
       let fichier = FILES_REPLAY[index];
