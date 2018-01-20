@@ -81,7 +81,7 @@ function reponseDossier(resp){
 
  function reponseFichier(resp){
   if (!resp.error) {
-      FILES_REPLAY = resp.items;
+      FILES_REPLAY = resp.files;
   }else{
       showErrorMessage("Erreur: " + resp.error.message);
   }
@@ -98,10 +98,8 @@ function getFiles() {
   request.execute(reponseDossier);
 
   if(FOLDER_REPLAY){
-    /*let request = gapi.client.drive.files.list({
-      mimeType : 'application/vnd.google-apps.spreadsheet',
-      q : FOLDER_REPLAY.getId()+" in parents",
-      sharedWithMe : true
+    let request = gapi.client.drive.files.list({
+      q : "mimeType : 'application/vnd.google-apps.spreadsheet' and sharedWithMe : true and"+ FOLDER_REPLAY.getId()+" in parents"
     });
 
     request.execute(reponseFichier);
@@ -109,7 +107,7 @@ function getFiles() {
     for(let index = 0;index < FILES_REPLAY.length;index++){
       let fichier = FILES_REPLAY[index];
       console.log(fichier);
-    }*/
+    }
 
     console.log(FOLDER_REPLAY);
   }
