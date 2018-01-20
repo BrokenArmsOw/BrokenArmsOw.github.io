@@ -1,16 +1,18 @@
 // Client ID and API key from the Developer Console
 var CLIENT_ID = '1074490662687-7lnpsrg7i1cvq67a4v76dmhmlm9504kf.apps.googleusercontent.com';
-var API_KEY = '';
+var API_KEY = 'AIzaSyDFsoWk-iagO1k8y_OtbfYfwKo92tqxOhA';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
-var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest","https://sheets.googleapis.com/$discovery/rest?version=v4"];
 
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
-var SCOPES = "https://www.googleapis.com/auth/drive.file";
+var SCOPES = "https://www.googleapis.com/auth/drive";
 
 var authorizeButton = document.getElementById('login-button');
 var signoutButton = document.getElementById('signout-button');
+var FOLDER_REPLAY = null;
+var FILES_REPLAY = [];
 
 /**
  *  On load, called to load the auth2 library and API client library.
@@ -48,7 +50,7 @@ function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
-    listMajors();
+    getFiles();
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
@@ -69,39 +71,51 @@ function handleSignoutClick(event) {
   gapi.auth2.getAuthInstance().signOut();
 }
 
-/**
- * Append a pre element to the body containing the given message
- * as its text node. Used to display the results of the API call.
- *
- * @param {string} message Text to be placed in pre element.
- */
-function appendPre(message) {
-  var pre = document.getElementById('content');
-  var textContent = document.createTextNode(message + '\n');
-  pre.appendChild(textContent);
-}
+function reponseDossier(resp){
+  if (!resp.error) {
+      FOLDER_REPLAY = resp.items;
+  }else{
+      showErrorMessage("Erreur: " + resp.error.message);
+  }
+ }
+
+ function reponseFichier(resp){
+  if (!resp.error) {
+      FILES_REPLAY = resp.items;
+  }else{
+      showErrorMessage("Erreur: " + resp.error.message);
+  }
+ }
 
 /**
- * Print the names and majors of students in a sample spreadsheet:
- * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ * Recuperation des fichiers avec lien replay
  */
-function listMajors() {
-  gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    range: 'Class Data!A2:E',
-  }).then(function(response) {
-    var range = response.result;
-    if (range.values.length > 0) {
-      appendPre('Name, Major:');
-      for (i = 0; i < range.values.length; i++) {
-        var row = range.values[i];
-        // Print columns A and E, which correspond to indices 0 and 4.
-        appendPre(row[0] + ', ' + row[4]);
-      }
-    } else {
-      appendPre('No data found.');
-    }
-  }, function(response) {
-    appendPre('Error: ' + response.result.error.message);
+function getFiles() {
+  let request = gapi.client.drive.files.list({
+    name = 'Replay',
+    mimeType = 'application/vnd.google-apps.folder',
+    sharedWithMe = true
   });
+
+  request.execute(reponseDossier);
+
+  if(FOLDER_REPLAY){
+    let request = gapi.client.drive.files.list({
+      mimeType = 'application/vnd.google-apps.spreadsheet',
+      q = FOLDER_REPLAY.getId()+" in parents",
+      sharedWithMe = true
+    });
+
+    request.execute(reponseFichier);
+
+    for(let index = 0;index < FILES_REPLAY.length;index++){
+      let fichier = FILES_REPLAY[index];
+      console.log(fichier);
+    }
+  }
+
+}
+
+function showErrorMessage(errorMessage){
+    $("#content").html(errorMessage);
 }
