@@ -92,18 +92,18 @@ function reponseDossier(resp){
  */
 function getFiles() {
   let request = gapi.client.drive.files.list({
-    name = 'Replay',
-    mimeType = 'application/vnd.google-apps.folder',
-    sharedWithMe = true
+    name : 'Replay',
+    mimeType : 'application/vnd.google-apps.folder',
+    sharedWithMe : true
   });
 
   request.execute(reponseDossier);
 
   if(FOLDER_REPLAY){
     let request = gapi.client.drive.files.list({
-      mimeType = 'application/vnd.google-apps.spreadsheet',
-      q = FOLDER_REPLAY.getId()+" in parents",
-      sharedWithMe = true
+      mimeType : 'application/vnd.google-apps.spreadsheet',
+      q : FOLDER_REPLAY.getId()+" in parents",
+      sharedWithMe : true
     });
 
     request.execute(reponseFichier);
