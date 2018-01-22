@@ -83,6 +83,7 @@ function reponseDossier(resp){
  }
 
  function reponseFichier(resp){
+  alert(resp);
   if (!resp.error) {
       for(i=0;i<resp.files.length;i++)
         FILES_REPLAY.push(resp.files[i]);
