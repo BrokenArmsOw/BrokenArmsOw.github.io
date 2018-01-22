@@ -15,6 +15,7 @@ var FOLDER_REPLAY = null;
 var FILES_REPLAY = [];
 
 var mapFiles = new Map();
+var range;
 
 /**
  *  On load, called to load the auth2 library and API client library.
@@ -90,13 +91,12 @@ function reponseDossier(resp){
  }
 
  function reponseTableur(response){
-  let range = response.result;
+  range = response.result;
       /*if (range.values.length > 0) {
        
       } else {
         
       }*/
-  consolo.log(range);
  }
 
  function erreurTableur(response){
