@@ -121,26 +121,25 @@ function getFiles() {
 
   request.execute(reponseDossier);
 
-  if(FOLDER_REPLAY != undefined){
-    let requestfile = gapi.client.drive.files.list({
-      q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
-    });
+  let requestfile = gapi.client.drive.files.list({
+    q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
+  });
 
-    requestfile.execute(reponseFichier);
+  requestfile.execute(reponseFichier);
 
-    for(let index = 0;index < FILES_REPLAY.length;index++){
-      let fichier = FILES_REPLAY[index];
+  for(let index = 0;index < FILES_REPLAY.length;index++){
+    let fichier = FILES_REPLAY[index];
 
-      let tabFichier = map.get(fichier.name);
-      if(tabFichier == undefined){
-        tabFichier = [];
-        map.set(fichier.name);
-      }
-
-      tabFichier.push(lireFichier(fichier));
-
+    let tabFichier = map.get(fichier.name);
+    if(tabFichier == undefined){
+      tabFichier = [];
+      map.set(fichier.name);
     }
+
+    tabFichier.push(lireFichier(fichier));
+
   }
+  
 
 }
 
