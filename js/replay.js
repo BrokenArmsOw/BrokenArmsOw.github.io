@@ -14,6 +14,8 @@ var signoutButton = document.getElementById('signout-button');
 var FOLDER_REPLAY = null;
 var FILES_REPLAY = [];
 
+var mapFiles = new Map();
+
 /**
  *  On load, called to load the auth2 library and API client library.
  */
@@ -87,6 +89,27 @@ function reponseDossier(resp){
   }
  }
 
+ function reponseTableur(response){
+  let range = response.result;
+      /*if (range.values.length > 0) {
+       
+      } else {
+        
+      }*/
+  consolo.log(range);
+ }
+
+ function erreurTableur(response){
+    showErrorMessage('Error: ' + response.result.error.message);
+ }
+
+ function lireFichier(fichier){
+    gapi.client.sheets.spreadsheets.values.batchGet({
+      spreadsheetId: fichier.id,
+      range: 'Feuille 1!A:E',
+    }).then(reponseTableur,erreurTableur);
+ }
+
 /**
  * Recuperation des fichiers avec lien replay
  */
@@ -99,17 +122,23 @@ function getFiles() {
 
   if(FOLDER_REPLAY){
     let requestfile = gapi.client.drive.files.list({
-      q : "mimeType = 'application/vnd.google-apps.spreadsheet' and sharedWithMe = true and '"+ FOLDER_REPLAY.id+"' in parents"
+      q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
     });
 
     requestfile.execute(reponseFichier);
-
+    requestfile.execute(function (resp) {console.log(resp);});
     for(let index = 0;index < FILES_REPLAY.length;index++){
       let fichier = FILES_REPLAY[index];
-      console.log(fichier);
-    }
 
-    console.log(FOLDER_REPLAY);
+      let tabFichier = map.get(fichier.name);
+      if(tabFichier == undefined){
+        tabFichier = [];
+        map.set(fichier.name);
+      }
+
+      tabFichier.push(lireFichier(fichier));
+
+    }
   }
 
 }
