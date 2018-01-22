@@ -84,7 +84,7 @@ function reponseDossier(resp){
 
  function reponseFichier(resp){
   if (!resp.error) {
-      FILES_REPLAY = resp.files;
+      FILES_REPLAY = resp.result.files;
   }else{
       showErrorMessage("Erreur: " + resp.error.message);
   }
@@ -126,7 +126,8 @@ function getFiles() {
     });
 
     requestfile.execute(reponseFichier);
-    requestfile.execute(function (resp) {console.log(resp);});
+    //requestfile.execute(function (resp) {console.log(resp);});
+    
     for(let index = 0;index < FILES_REPLAY.length;index++){
       let fichier = FILES_REPLAY[index];
 
