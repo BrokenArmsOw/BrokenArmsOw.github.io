@@ -16,6 +16,7 @@ var FILES_REPLAY = [];
 
 var mapFiles = new Map();
 var range;
+var reponse;
 
 /**
  *  On load, called to load the auth2 library and API client library.
@@ -83,7 +84,7 @@ function reponseDossier(resp){
  }
 
  function reponseFichier(resp){
-  alert(resp);
+  reponse = resp;
   if (!resp.error) {
       for(i=0;i<resp.files.length;i++)
         FILES_REPLAY.push(resp.files[i]);
