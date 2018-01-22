@@ -16,7 +16,6 @@ var FILES_REPLAY = [];
 
 var mapFiles = new Map();
 var range;
-var reponse;
 
 /**
  *  On load, called to load the auth2 library and API client library.
@@ -83,6 +82,15 @@ function reponseDossier(resp){
   }
  }
 
+ function reponseFichier(resp){
+  if (!resp.error) {
+      for(i=0;i<resp.files.length;i++)
+        FILES_REPLAY.push(resp.files[i]);
+  }else{
+      showErrorMessage("Erreur: " + resp.error.message);
+  }
+ }
+
  function reponseTableur(response){
   range = response.result;
       /*if (range.values.length > 0) {
@@ -113,21 +121,12 @@ function getFiles() {
 
   request.execute(reponseDossier);
 
-  if(FOLDER_REPLAY){
+  if(FOLDER_REPLAY != undefined){
     let requestfile = gapi.client.drive.files.list({
       q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
     });
 
-    requestfile.execute(function (resp){
-      if (!resp.error) {
-        for(i=0;i<resp.files.length;i++)
-          FILES_REPLAY.push(resp.files[i]);
-      }else{
-        showErrorMessage("Erreur: " + resp.error.message);
-      }
-    });
-
-    alert("dd");
+    requestfile.execute(reponseFichier);
 
     for(let index = 0;index < FILES_REPLAY.length;index++){
       let fichier = FILES_REPLAY[index];
