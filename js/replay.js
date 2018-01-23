@@ -38,6 +38,17 @@ function Deconnexion(event) {
   gapi.auth2.getAuthInstance().signOut();
 }
 
+/**
+ * Recuperation des fichiers avec lien replay
+ */
+function getFiles() {
+  let request = gapi.client.drive.files.list({
+    q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
+  });
+
+  request.execute(reponseDossier);
+}
+
 function reponseDossier(resp){
   if (!resp.error) {
       FOLDER_REPLAY = resp.files[0];
@@ -47,28 +58,24 @@ function reponseDossier(resp){
   }
  }
 
+ function lireFichiers(){
+  let requestfile = gapi.client.drive.files.list({
+    q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
+  });
+
+  requestfile.execute(reponseFichier);
+ }
+
  function reponseFichier(resp){
   if (!resp.error) {
       for(i=0;i<resp.files.length;i++){
         FILES_REPLAY.push(resp.files[i]);
       } 
+      console.log(resp);
       lireFichier();
   }else{
       showErrorMessage("Erreur: " + resp.error.message);
   }
- }
-
- function reponseTableur(response){
-  range = response.result;
-      /*if (range.values.length > 0) {
-       
-      } else {
-        
-      }*/
- }
-
- function erreurTableur(response){
-    showErrorMessage('Error: ' + response.result.error.message);
  }
 
  function lireFichier(){
@@ -84,27 +91,21 @@ function reponseDossier(resp){
     tabFichier.push(lireFichier(fichier));*/
 
   }
-    gapi.client.sheets.spreadsheets.values.batchGet({
+    /*gapi.client.sheets.spreadsheets.values.batchGet({
       spreadsheetId: fichier.id,
       range: 'Feuille 1!A:E',
-    }).then(reponseTableur,erreurTableur);
+    }).then(reponseTableur,erreurTableur);*/
  }
 
- function lireFichiers(){
-  let requestfile = gapi.client.drive.files.list({
-    q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
-  });
-
-  requestfile.execute(reponseFichier);
+ function reponseTableur(response){
+  range = response.result;
+      /*if (range.values.length > 0) {
+       
+      } else {
+        
+      }*/
  }
 
-/**
- * Recuperation des fichiers avec lien replay
- */
-function getFiles() {
-  let request = gapi.client.drive.files.list({
-    q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
-  });
-
-  request.execute(reponseDossier);
-}
+ function erreurTableur(response){
+    showErrorMessage('Error: ' + response.result.error.message);
+ }
