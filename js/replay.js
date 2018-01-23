@@ -39,7 +39,6 @@ function Deconnexion(event) {
 }
 
 function reponseDossier(resp){
-  console.log(resp);
   if (!resp.error) {
       FOLDER_REPLAY = resp.files[0];
   }else{
@@ -84,14 +83,9 @@ function getFiles() {
     q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
   });
 
-  request.execute(function (resp){
-    console.log(resp);
-    if (!resp.error) {
-        FOLDER_REPLAY = resp.files[0];
-    }else{
-        showErrorMessage("Erreur: " + resp.error.message);
-    }
-  });
+  request.execute(reponseDossier);
+
+  console.log(request);
 
   let requestfile = gapi.client.drive.files.list({
     q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
