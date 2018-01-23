@@ -66,4 +66,4 @@ function gererClic(evenement)
 }
 
 //Lie la fonction initialiser au gestionnaire d'événément onLoad de la page
-//window.onload = initialiser;
+window.onload = initialiser;
