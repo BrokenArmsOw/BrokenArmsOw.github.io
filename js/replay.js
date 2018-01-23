@@ -84,9 +84,14 @@ function getFiles() {
     q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
   });
 
-  request.execute(reponseDossier);
-
-  console.log(FOLDER_REPLAY);
+  request.execute(function (resp){
+    console.log(resp);
+    if (!resp.error) {
+        FOLDER_REPLAY = resp.files[0];
+    }else{
+        showErrorMessage("Erreur: " + resp.error.message);
+    }
+  });
 
   let requestfile = gapi.client.drive.files.list({
     q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
