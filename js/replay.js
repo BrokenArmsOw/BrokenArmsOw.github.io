@@ -85,6 +85,8 @@ function getFiles() {
 
   request.execute(reponseDossier);
 
+  console.log(FOLDER_REPLAY);
+
   let requestfile = gapi.client.drive.files.list({
     q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
   });
