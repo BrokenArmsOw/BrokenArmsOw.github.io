@@ -41,6 +41,7 @@ function Deconnexion(event) {
 function reponseDossier(resp){
   if (!resp.error) {
       FOLDER_REPLAY = resp.files[0];
+      lireFichier();
   }else{
       showErrorMessage("Erreur: " + resp.error.message);
   }
@@ -48,8 +49,10 @@ function reponseDossier(resp){
 
  function reponseFichier(resp){
   if (!resp.error) {
-      for(i=0;i<resp.files.length;i++)
+      for(i=0;i<resp.files.length;i++){
         FILES_REPLAY.push(resp.files[i]);
+      } 
+      lireFichier();
   }else{
       showErrorMessage("Erreur: " + resp.error.message);
   }
@@ -68,31 +71,7 @@ function reponseDossier(resp){
     showErrorMessage('Error: ' + response.result.error.message);
  }
 
- function lireFichier(fichier){
-    gapi.client.sheets.spreadsheets.values.batchGet({
-      spreadsheetId: fichier.id,
-      range: 'Feuille 1!A:E',
-    }).then(reponseTableur,erreurTableur);
- }
-
-/**
- * Recuperation des fichiers avec lien replay
- */
-function getFiles() {
-  let request = gapi.client.drive.files.list({
-    q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
-  });
-
-  request.execute(reponseDossier);
-
-  console.log(request);
-
-  let requestfile = gapi.client.drive.files.list({
-    q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
-  });
-
-  requestfile.execute(reponseFichier);
-
+ function lireFichier(){
   for(let index = 0;index < FILES_REPLAY.length;index++){
     let fichier = FILES_REPLAY[index];
     console.log(fichier);
@@ -105,5 +84,27 @@ function getFiles() {
     tabFichier.push(lireFichier(fichier));*/
 
   }
+    gapi.client.sheets.spreadsheets.values.batchGet({
+      spreadsheetId: fichier.id,
+      range: 'Feuille 1!A:E',
+    }).then(reponseTableur,erreurTableur);
+ }
 
+ function lireFichiers(){
+  let requestfile = gapi.client.drive.files.list({
+    q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ FOLDER_REPLAY.id+"' in parents"
+  });
+
+  requestfile.execute(reponseFichier);
+ }
+
+/**
+ * Recuperation des fichiers avec lien replay
+ */
+function getFiles() {
+  let request = gapi.client.drive.files.list({
+    q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
+  });
+
+  request.execute(reponseDossier);
 }
