@@ -1,48 +1,12 @@
-// Client ID and API key from the Developer Console
-var CLIENT_ID = '1074490662687-7lnpsrg7i1cvq67a4v76dmhmlm9504kf.apps.googleusercontent.com';
-var API_KEY = 'AIzaSyDFsoWk-iagO1k8y_OtbfYfwKo92tqxOhA';
 
-// Array of API discovery doc URLs for APIs used by the quickstart
-var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest","https://sheets.googleapis.com/$discovery/rest?version=v4"];
-
-// Authorization scopes required by the API; multiple scopes can be
-// included, separated by spaces.
-var SCOPES = "https://www.googleapis.com/auth/drive";
-
-var authorizeButton = document.getElementById('login-button');
-var signoutButton = document.getElementById('signout-button');
 var FOLDER_REPLAY = null;
 var FILES_REPLAY = [];
 
 var mapFiles = new Map();
 var range;
 
-/**
- *  On load, called to load the auth2 library and API client library.
- */
-function handleClientLoad() {
-  gapi.load('client:auth2', initClient);
-}
-
-/**
- *  Initializes the API client library and sets up sign-in state
- *  listeners.
- */
-function initClient() {
-  gapi.client.init({
-    apiKey: API_KEY,
-    clientId: CLIENT_ID,
-    discoveryDocs: DISCOVERY_DOCS,
-    scope: SCOPES
-  }).then(function () {
-    // Listen for sign-in state changes.
-    gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-    // Handle the initial sign-in state.
-    updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-    authorizeButton.onclick = handleAuthClick;
-    signoutButton.onclick = handleSignoutClick;
-  });
+function showErrorMessage(errorMessage){
+  $("#content").html(errorMessage);
 }
 
 /**
@@ -51,26 +15,26 @@ function initClient() {
  */
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
-    authorizeButton.style.display = 'none';
-    signoutButton.style.display = 'block';
+    $("#btnConnexion").hide();
+    $("#btnDeconnexion").show();
     getFiles();
   } else {
-    authorizeButton.style.display = 'block';
-    signoutButton.style.display = 'none';
+    $("#btnConnexion").show();
+    $("#btnDeconnexion").hide();
   }
 }
 
 /**
  *  Sign in the user upon button click.
  */
-function handleAuthClick(event) {
+function Connexion(event) {
   gapi.auth2.getAuthInstance().signIn();
 }
 
 /**
  *  Sign out the user upon button click.
  */
-function handleSignoutClick(event) {
+function Deconnexion(event) {
   gapi.auth2.getAuthInstance().signOut();
 }
 
@@ -129,20 +93,15 @@ function getFiles() {
 
   for(let index = 0;index < FILES_REPLAY.length;index++){
     let fichier = FILES_REPLAY[index];
-
-    let tabFichier = map.get(fichier.name);
+    console.log(fichier);
+    /*let tabFichier = map.get(fichier.name);
     if(tabFichier == undefined){
       tabFichier = [];
       map.set(fichier.name);
     }
 
-    tabFichier.push(lireFichier(fichier));
+    tabFichier.push(lireFichier(fichier));*/
 
   }
-  
 
-}
-
-function showErrorMessage(errorMessage){
-    $("#content").html(errorMessage);
 }
