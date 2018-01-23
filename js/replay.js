@@ -68,7 +68,6 @@ function reponseDossier(resp){
       for(i=0;i<resp.files.length;i++){
         FILES_REPLAY.push(resp.files[i]);
       } 
-      console.log(resp);
       lireFichier();
   }else{
       showErrorMessage("Erreur: " + resp.error.message);
@@ -78,7 +77,6 @@ function reponseDossier(resp){
  function lireFichier(){
   for(let index = 0;index < FILES_REPLAY.length;index++){
     let fichier = FILES_REPLAY[index];
-    console.log(fichier);
     /*let tabFichier = map.get(fichier.name);
     if(tabFichier == undefined){
       tabFichier = [];
@@ -88,7 +86,7 @@ function reponseDossier(resp){
     tabFichier.push(lireFichier(fichier));*/
     gapi.client.sheets.spreadsheets.values.batchGet({
       spreadsheetId: fichier.id,
-      range: 'Feuille 1!A:E',
+      ranges: 'Feuille 1!A:E',
     }).then(reponseTableur,erreurTableur);
   }
  }
