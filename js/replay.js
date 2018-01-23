@@ -2,9 +2,6 @@
 var FOLDER_REPLAY = null;
 var FILES_REPLAY = [];
 
-var mapFiles = new Map();
-var range;
-
 function showErrorMessage(errorMessage){
   $("#content").html(errorMessage);
 }
@@ -52,7 +49,7 @@ function getFiles() {
 function reponseDossier(resp){
   if (!resp.error) {
       FOLDER_REPLAY = resp.files[0];
-      lireFichier();
+      lireFichiers();
   }else{
       showErrorMessage("Erreur: " + resp.error.message);
   }
@@ -89,16 +86,16 @@ function reponseDossier(resp){
     }
 
     tabFichier.push(lireFichier(fichier));*/
-
-  }
-    /*gapi.client.sheets.spreadsheets.values.batchGet({
+    gapi.client.sheets.spreadsheets.values.batchGet({
       spreadsheetId: fichier.id,
       range: 'Feuille 1!A:E',
-    }).then(reponseTableur,erreurTableur);*/
+    }).then(reponseTableur,erreurTableur);
+  }
  }
 
  function reponseTableur(response){
-  range = response.result;
+  let range = response.result;
+  console.log(range);
       /*if (range.values.length > 0) {
        
       } else {
