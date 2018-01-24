@@ -1,6 +1,4 @@
-
-var FOLDER_REPLAY = null;
-var FILES_REPLAY = [];
+var dossier;
 
 function showErrorMessage(errorMessage){
   $("#content").html(errorMessage);
@@ -14,7 +12,7 @@ function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     $("#btnConnexion").hide();
     $("#btnDeconnexion").show();
-    getFiles();
+    dossier = new Dossier();
   } else {
     $("#btnConnexion").show();
     $("#btnDeconnexion").hide();
@@ -38,7 +36,7 @@ function Deconnexion(event) {
 /**
  * Recuperation des fichiers avec lien replay
  */
-function getFiles() {
+/*function getFiles() {
   let request = gapi.client.drive.files.list({
     q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
   });
@@ -83,7 +81,7 @@ function reponseDossier(resp){
       map.set(fichier.name);
     }
 
-    tabFichier.push(lireFichier(fichier));*/
+    tabFichier.push(lireFichier(fichier));
     gapi.client.sheets.spreadsheets.values.batchGet({
       spreadsheetId: fichier.id,
       ranges: 'Feuille 1!A:E',
@@ -98,9 +96,9 @@ function reponseDossier(resp){
        
       } else {
         
-      }*/
+      }
  }
 
  function erreurTableur(response){
     showErrorMessage('Error: ' + response.result.error.message);
- }
+ }*/
