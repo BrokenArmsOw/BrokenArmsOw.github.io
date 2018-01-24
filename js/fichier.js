@@ -7,9 +7,9 @@ class Fichier{
         let requete = gapi.client.sheets.spreadsheets.values.batchGet({
             spreadsheetId: this.id,
             ranges: 'Feuille 1!A:E',
-        }).then(reponseTableur,erreurTableur);
+        });
 
-        requete.execute(reponseTableur);
+        requete.execute(this.reponseTableur);
     }
 
     reponseTableur(reponse){

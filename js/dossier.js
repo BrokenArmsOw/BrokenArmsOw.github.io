@@ -6,7 +6,7 @@ class Dossier{
             q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
         });
 
-        requete.execute(reponseDossier);
+        requete.execute(this.reponseDossier);
     }
 
     reponseDossier(reponse){
@@ -23,7 +23,7 @@ class Dossier{
             q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ this.id +"' in parents"
         });
         
-        requete.execute(reponseFichier);
+        requete.execute(this.reponseFichier);
     }
 
     reponseFichier(reponse){
