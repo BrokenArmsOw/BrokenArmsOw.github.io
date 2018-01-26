@@ -11,7 +11,8 @@ class Dossier{
 
     reponseDossier(reponse){
         if (!reponse.error) {
-            this.id = reponse.files[0].id;
+            let folder = reponse.files[0];
+            this.id = folder.id;
             this.lireFichiers();
         }else{
             showErrorMessage("Erreur: " + reponse.error.message);
