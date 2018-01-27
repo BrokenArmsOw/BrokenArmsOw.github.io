@@ -1,6 +1,7 @@
 var Dossier = function(){
     var _ = {
         id : '',
+        nbFichier : -1,
         fichiers : new Map()
     };   
     
@@ -46,6 +47,8 @@ Dossier.prototype.lireFichiers = function(){
 
 Dossier.prototype.reponseFichier = function(reponse){
     if (!reponse.error) {
+        this.set("nbFichier",reponse.files.length);
+
         for(i=0;i<reponse.files.length;i++){
             let f = reponse.files[i];
             let fichier = new Fichier(f.id,f.name);
@@ -65,8 +68,6 @@ Dossier.prototype.getMenu = function(){
 
         let n = fichier.getMenu();
 
-        while(!fichier.get("ready")){console.log("not ready");};
-
         let f = {text: fichier.get("name"),tags: [fichier.profondeurMenu()],nodes:n};
 
         menu.push(f);
@@ -78,3 +79,14 @@ Dossier.prototype.getMenu = function(){
         data: menu
       });
 };
+
+Dossier.prototype.ready = function(){
+    let ready = 0;
+    for(let [name, fichier] of fichiers.entries()){
+        if(fichier.get("ready")){
+            ready++; 
+        }
+    }
+
+    return ready == this.get("nbFichier");
+}
