@@ -37,8 +37,9 @@ Dossier.prototype.reponseDossier = function(reponse){
 };
 
 Dossier.prototype.lireFichiers = function(){
+    console.log(this);
     let requete = gapi.client.drive.files.list({
-        q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ this.dossier.get('id') +"' in parents"
+        q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ this.get('id') +"' in parents"
     });
     
     requete.execute(this.reponseFichier);
