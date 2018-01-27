@@ -17,6 +17,7 @@ function updateSigninStatus(isSignedIn) {
     dossier.getDossier();
 
     while(!dossier.ready()){};
+    
     dossier.getMenu();
     $("#loader").hide();
 

@@ -82,6 +82,8 @@ Dossier.prototype.getMenu = function(){
 
 Dossier.prototype.ready = function(){
     let ready = 0;
+    let fichiers = this.get("fichiers");
+    
     for(let [name, fichier] of fichiers.entries()){
         if(fichier.get("ready")){
             ready++; 
