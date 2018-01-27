@@ -109,7 +109,7 @@ Fichier.prototype.printVideo = function(date,pov){
         let indicator_li = $('<li data-target="#videos"></li>').attr("data-slide-to",i);
         indicators.append(indicator_li);
         
-        let lien = $("<a></a>").attr("href",video["URL"]);
+        let lien = $("<a>Lien</a>").attr("href",video["URL"]);
         let carte = $("<h3></h3>").append(video["Carte"]);
 
         let caption = $('<div class="carousel-caption"></div>');
