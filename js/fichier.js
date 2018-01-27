@@ -3,7 +3,9 @@ class Fichier{
         this.id = Id;
         this.name = Name;
         this.data;
+    }
 
+    get(){
         let requete = gapi.client.sheets.spreadsheets.values.batchGet({
             spreadsheetId: this.id,
             ranges: 'Feuille 1!A:E',

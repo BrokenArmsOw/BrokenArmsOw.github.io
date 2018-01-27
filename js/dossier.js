@@ -2,6 +2,10 @@ class Dossier{
     constructor(){
         this.id = '';
         this.fichiers = [];
+        
+    }
+
+    get(){
         let requete = gapi.client.drive.files.list({
             q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
         });
@@ -31,8 +35,10 @@ class Dossier{
     reponseFichier(reponse){
         if (!reponse.error) {
             for(i=0;i<reponse.files.length;i++){
-                let fichier = reponse.files[i];
-                fichiers.push(new Fichier(fichier.id,fichier.name));
+                let f = reponse.files[i];
+                let fichier = new Fichier(fichier.id,fichier.name);
+                fichier.get();
+                fichiers.push(fichier);
             } 
         }else{
             showErrorMessage("Erreur: " + reponse.error.message);
