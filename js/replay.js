@@ -24,7 +24,6 @@ function updateSigninStatus(isSignedIn) {
   } else {
     $("#btnConnexion").show();
     $("#btnDeconnexion").hide();
-    $("#loader").hide();
   }
 }
 
