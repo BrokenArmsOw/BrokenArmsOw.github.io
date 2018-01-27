@@ -15,7 +15,7 @@ function updateSigninStatus(isSignedIn) {
     dossier = new Dossier();
     dossier.getDossier();
     
-    setTimeout(dossier.getMenu.bind(dossier), 4000);
+    setTimeout(dossier.getMenu.bind(dossier), 1000);
 
   } else {
     $("#btnConnexion").show();
@@ -39,6 +39,9 @@ function Deconnexion(event) {
 }
 
 function clickMenu(event){
+  let indicators = $("#indicators_videos").empty();
+  let inner = $("#inner_videos").empty();
+
   let target = event.target;
 
   let pov = target.getAttribute("pov");

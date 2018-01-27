@@ -32,8 +32,5 @@
 
 #videos{
     display : none;
-}
-
-.couleurIcon{
-    color:#428bca;
+    background-color: rgb(175, 175, 175);
 }
