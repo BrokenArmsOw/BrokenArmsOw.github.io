@@ -1,7 +1,7 @@
 var Dossier = function(){
     var _ = {
         id : '',
-        fichiers : null
+        fichiers : new Map()
     };   
     
     this.get = function(variable) 
