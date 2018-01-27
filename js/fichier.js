@@ -68,14 +68,16 @@ Fichier.prototype.profondeurMenu = function(){
 
     let profondeur = 0;
     let data = this.get("data");
-    for(let [date, mapPov] of data.entries()){
-        for(let [pov, tab] of mapPov.entries()){
+
+    if(data){
+        for(let [date, mapPov] of data.entries()){
+            for(let [pov, tab] of mapPov.entries()){
+                profondeur++;
+            }
+    
             profondeur++;
         }
-
-        profondeur++;
     }
-
     return profondeur;
 }
 
@@ -83,16 +85,20 @@ Fichier.prototype.getMenu = function(){
     let menu = [];
     let data = this.get("data");
 
-    for(let [date, mapPov] of data.entries()){
-        let menuPov = [];
-        for(let [pov, tab] of mapPov.entries()){
-
-            let p = {text: pov, click: clickMenu, tags: [0], pov: pov, date: date, fichier: this.get("name")};
-            menuPov.push(p);
+    if(data){
+        for(let [date, mapPov] of data.entries()){
+            let menuPov = [];
+            for(let [pov, tab] of mapPov.entries()){
+    
+                let p = {text: pov, click: clickMenu, tags: [0], pov: pov, date: date, fichier: this.get("name")};
+                menuPov.push(p);
+            }
+            let d = {text: date, tags: [menuPov.length],nodes:menuPov};
+            menu.push(d);
         }
-        let d = {text: date, tags: [menuPov.length],nodes:menuPov};
-        menu.push(d);
     }
+
+    
     return menu;
 }
 
