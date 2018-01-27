@@ -58,6 +58,7 @@ Fichier.prototype.reponseTableur = function(reponse){
         }
 
         this.data = mapDate; 
+        console.log("fini");
     }else{
         showErrorMessage('Error: ' + reponse.result.error.message);
     }
@@ -67,7 +68,7 @@ Fichier.prototype.reponseTableur = function(reponse){
 Fichier.prototype.profondeurMenu = function(){
 
     let profondeur = 0;
-    let data = this.get('data');
+    let data = this.get("data");
     for(let date in data){
         let mapPov = data.get(date);
 
@@ -83,9 +84,9 @@ Fichier.prototype.profondeurMenu = function(){
 
 Fichier.prototype.getMenu = function(){
     let menu = [];
-    let data = this.get('data');
+    let data = this.get("data");
     console.log(data);
-    
+
     for(let date in data){
         let mapPov = data.get(date);
         let menuPov = [];
@@ -101,6 +102,8 @@ Fichier.prototype.getMenu = function(){
 }
 
 Fichier.prototype.printVideo = function(carousel,date,pov){
+    let data = this.get("data");
+
     let videos = data.get(date).get(pov);
     let indicators = carousel.filter("#indicators_videos")[0];
     let inner = carousel.filter("#inner_videos")[0];
