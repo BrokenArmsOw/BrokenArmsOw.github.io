@@ -47,11 +47,11 @@ Dossier.prototype.reponseFichier = function(reponse){
     if (!reponse.error) {
         for(i=0;i<reponse.files.length;i++){
             let f = reponse.files[i];
-            let fichier = new Fichier(fichier.id,fichier.name);
+            console.log(f);
+            let fichier = new Fichier(f.id,f.name);
             fichier.getFichier();
 
-            let fs = this.get('fichiers');
-            fs.push(fichier);
+            this.get('fichiers').push(fichier);
         } 
     }else{
         showErrorMessage("Erreur: " + reponse.error.message);
