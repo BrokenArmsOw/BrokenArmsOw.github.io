@@ -31,7 +31,8 @@ Fichier.prototype.reponseTableur = function(reponse){
         let range = reponse.result;
 
         let mapDate = new Map();
-
+        console.log(range);
+        
         for(i=0;i<range.values.length;i++){
             let row = range.values[i];
             let date = row[0];
