@@ -587,6 +587,9 @@
 				treeItem
 					.append($(_this.template.link)
 						.attr('href', node.href)
+						.attr('pov',node.pov)
+						.attr('date',node.date)
+						.attr('fichier',node.fichier)
 						.click(node.click)
 						.append(node.text)
 					);
@@ -594,7 +597,10 @@
 			else {
 				// otherwise just text
 				treeItem
-					.append(node.text);
+					.append(node.text)
+					.attr('pov',node.pov)
+					.attr('date',node.date)
+					.attr('fichier',node.fichier);
 			}
 
 			// Add tags as badges

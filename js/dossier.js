@@ -1,7 +1,7 @@
 var Dossier = function(){
     var _ = {
         id : '',
-        fichiers : []
+        fichiers : null
     };   
     
     this.get = function(variable) 
@@ -50,7 +50,7 @@ Dossier.prototype.reponseFichier = function(reponse){
             let f = reponse.files[i];
             let fichier = new Fichier(f.id,f.name);
             fichier.getFichier();
-            this.get('fichiers').push(fichier);
+            this.get('fichiers').set(f.name,fichier);
         } 
     }else{
         showErrorMessage("Erreur: " + reponse.error.message);

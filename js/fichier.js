@@ -87,7 +87,7 @@ Fichier.prototype.getMenu = function(){
         let menuPov = [];
         for(let [pov, tab] of mapPov.entries()){
 
-            let p = {text: pov, href: "#"+pov, click: clickMenu,tags: [0],nodes:[]};
+            let p = {text: pov, href: "#"+pov, click: clickMenu,tags: [0], pov: pov,date: date,fichier: this.get("name")};
             menuPov.push(p);
         }
         let d = {text: date, href: "#"+date,tags: [menuPov.length],nodes:menuPov};
