@@ -57,7 +57,7 @@ Fichier.prototype.reponseTableur = function(reponse){
             povArray.push({"Carte" : map,"URL" : lien});
         }
 
-        this.data = mapDate; 
+        this.set("data",mapDate);
         console.log("fini");
     }else{
         showErrorMessage('Error: ' + reponse.result.error.message);
