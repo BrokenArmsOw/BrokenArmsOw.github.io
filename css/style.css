@@ -22,7 +22,8 @@
 }
 
 .node-treeview{
-    color:#428bca;border:none;
+    color:#428bca;
+    border:none;
 }
 
 .node-treeview:not(.node-disabled):hover{
