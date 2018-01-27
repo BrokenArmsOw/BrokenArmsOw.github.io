@@ -32,6 +32,7 @@ function Connexion(event) {
  */
 function Deconnexion(event) {
   gapi.auth2.getAuthInstance().signOut();
+  delete this.dossier;
 }
 
 /**
