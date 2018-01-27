@@ -13,7 +13,7 @@ function updateSigninStatus(isSignedIn) {
     $("#btnConnexion").hide();
     $("#btnDeconnexion").show();
     dossier = new Dossier();
-    dossier.get();
+    dossier.getDossier();
   } else {
     $("#btnConnexion").show();
     $("#btnDeconnexion").hide();
