@@ -69,6 +69,8 @@ Dossier.prototype.getMenu = function(){
         menu.push(f);
     }
 
+    console.log(menu);
+
     $('#treeview_videos').treeview({
         color: "#428bca",
         showBorder: false,
