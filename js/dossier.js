@@ -12,7 +12,7 @@ class Dossier{
     reponseDossier(reponse){
         if (!reponse.error) {
             let folder = reponse.files[0];
-            console.log(folder);
+            console.log(this);
             this.id = folder.id;
             this.lireFichiers();
         }else{
