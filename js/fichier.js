@@ -58,7 +58,6 @@ Fichier.prototype.reponseTableur = function(reponse){
         }
 
         this.set("data",mapDate);
-        console.log("fini");
     }else{
         showErrorMessage('Error: ' + reponse.result.error.message);
     }
@@ -85,10 +84,10 @@ Fichier.prototype.profondeurMenu = function(){
 Fichier.prototype.getMenu = function(){
     let menu = [];
     let data = this.get("data");
-    console.log(data);
 
     for(let date in data){
         let mapPov = data.get(date);
+        console.log(mapPov);
         let menuPov = [];
 
         for(let pov in menuPov){
