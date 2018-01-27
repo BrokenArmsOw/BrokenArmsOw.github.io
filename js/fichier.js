@@ -116,7 +116,7 @@ Fichier.prototype.printVideo = function(date,pov){
         caption.append(carte);
         caption.append(lien);
 
-        let img = $('<img src="https://www.w3schools.com/howto/img_fjords.jpg" alt="Image">');
+        let img = $('<img class="d-block img-fluid" src="https://www.w3schools.com/howto/img_fjords.jpg" alt="Image">');
         
         let item = $('<div class="item"></div>').append(caption).append(img);
         inner.append(item);

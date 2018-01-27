@@ -29,3 +29,7 @@
 .node-treeview:not(.node-disabled):hover{
     background-color:#F5F5F5;
 } 
+
+#videos{
+    display : none;
+}

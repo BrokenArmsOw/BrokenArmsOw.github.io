@@ -46,4 +46,6 @@ function clickMenu(event){
   let fichier = target.getAttribute("fichier");
 
   dossier.get("fichiers").get(fichier).printVideo(date,pov);
+
+  $("#videos").show(); 
 }
