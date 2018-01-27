@@ -48,7 +48,7 @@ Dossier.prototype.reponseDossier = function(reponse){
         for(i=0;i<reponse.files.length;i++){
             let f = reponse.files[i];
             let fichier = new Fichier(fichier.id,fichier.name);
-            fichier.get();
+            fichier.getFichier();
 
             let fs = this.get('fichiers');
             console.log(fichier);
