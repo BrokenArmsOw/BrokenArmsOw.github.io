@@ -83,9 +83,9 @@ Fichier.prototype.profondeurMenu = function(){
 
 Fichier.prototype.getMenu = function(){
     let menu = [];
-
     let data = this.get('data');
-
+    console.log(data);
+    
     for(let date in data){
         let mapPov = data.get(date);
         let menuPov = [];
