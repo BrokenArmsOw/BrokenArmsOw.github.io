@@ -16,7 +16,7 @@ function updateSigninStatus(isSignedIn) {
     dossier = new Dossier();
     dossier.getDossier();
 
-    while(!dossier.ready()){console.log("toto")};
+    //while(!dossier.ready()){)};
 
     dossier.getMenu();
     $("#loader").hide();
