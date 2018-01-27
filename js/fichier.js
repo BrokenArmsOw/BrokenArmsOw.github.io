@@ -96,14 +96,12 @@ Fichier.prototype.getMenu = function(){
     return menu;
 }
 
-Fichier.prototype.printVideo = function(carousel,date,pov){
+Fichier.prototype.printVideo = function(date,pov){
     let data = this.get("data");
 
-    console.log(carousel);
-
     let videos = data.get(date).get(pov);
-    let indicators = carousel.filter("#indicators_videos")[0];
-    let inner = carousel.filter("#inner_videos")[0];
+    let indicators = $("#indicators_videos");
+    let inner = $("#inner_videos");
 
     for(i=0;i<videos.length;i++){
         let video = videos[i];
@@ -123,7 +121,7 @@ Fichier.prototype.printVideo = function(carousel,date,pov){
         inner.append(item);
     }
 
-    indicators.first().addClass("active");
+    indicators.firstElementChild.classList.add("active");
 
-    inner.first().addClass("active");
+    inner.firstElementChild.classList.add("active");
 }

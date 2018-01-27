@@ -44,7 +44,6 @@ function clickMenu(event){
   let pov = target.getAttribute("pov");
   let date = target.getAttribute("date");
   let fichier = target.getAttribute("fichier");
-  let carousel = $("#videos");
 
-  dossier.get("fichiers").get(fichier).printVideo(carousel,date,pov);
+  dossier.get("fichiers").get(fichier).printVideo(date,pov);
 }
