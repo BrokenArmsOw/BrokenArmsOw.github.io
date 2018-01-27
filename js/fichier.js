@@ -28,15 +28,20 @@ Fichier.prototype.getFichier = function(){
 
 Fichier.prototype.reponseTableur = function(reponse){
     if(!reponse.error){
+        console.log(this);
         let range = reponse.result;
         console.log(range);
-        /*if (range.values.length > 0) {
-            
-        } else {
-            
-        }*/
+        
     }else{
         showErrorMessage('Error: ' + reponse.result.error.message);
     }
 
 };
+
+Fichier.prototype.printMenu = function(menu){
+
+}
+
+Fichier.prototype.printVideo = function(tableau){
+
+}
