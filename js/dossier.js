@@ -1,7 +1,7 @@
 var Dossier = function(){
     var _ = {
-        id = '',
-        fichiers = []
+        id : '',
+        fichiers : []
     };   
     
     this.get = function(variable) 

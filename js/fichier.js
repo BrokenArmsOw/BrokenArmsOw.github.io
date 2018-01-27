@@ -1,8 +1,8 @@
 var Fichier = function(Id,Name){
     var _ = {
-        id = Id,
-        name = name,
-        data = null
+        id : Id,
+        name : Name,
+        data : null
     };   
     
     this.get = function(variable) 
