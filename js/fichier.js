@@ -59,7 +59,7 @@ Fichier.prototype.reponseTableur = function(reponse){
         }
 
         this.set("data",mapDate);
-        this.set("ready",false);
+        this.set("ready",true);
     }else{
         showErrorMessage('Error: ' + reponse.result.error.message);
     }
