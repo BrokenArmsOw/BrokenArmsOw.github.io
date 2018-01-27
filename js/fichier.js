@@ -123,9 +123,8 @@ Fichier.prototype.printVideo = function(date,pov){
 
         let caption = $('<div class="carousel-caption"></div>');
         caption.append(carte);
-        caption.append(lien);
         
-        let item = $('<div class="carousel-item"></div>').append(caption);
+        let item = $('<div class="carousel-item"></div>').append(lien).append(caption);
         inner.append(item);
 
         if(i==0){
