@@ -108,7 +108,7 @@ Fichier.prototype.printVideo = function(date,pov){
 
         let indicator_li = $('<li data-target="#videos"></li>').attr("data-slide-to",i);
         indicators.append(indicator_li);
-
+        
 
         let lien = $("<a></a>").attr("href",video["URL"]);
         lien.append(video["Carte"]);
@@ -119,11 +119,11 @@ Fichier.prototype.printVideo = function(date,pov){
 
         let item = $('<div class="item"></div>').append(caption);
         inner.append(item);
+
+        if(i==0){
+            indicator_li.addClass("active");
+            item.addClass("active");
+        }
     }
 
-    console.log(indicators.filter(":first"));
-    console.log(inner.filter(":first"));
-    
-    indicators.filter(":first").addClass("active");
-    inner.filter(":first").addClass("active");
 }
