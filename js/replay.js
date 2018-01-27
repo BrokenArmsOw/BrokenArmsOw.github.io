@@ -14,7 +14,6 @@ function updateSigninStatus(isSignedIn) {
     $("#btnDeconnexion").show();
     dossier = new Dossier();
     dossier.getDossier();
-    dossier.getMenu();
   } else {
     $("#btnConnexion").show();
     $("#btnDeconnexion").hide();
