@@ -64,8 +64,24 @@ Fichier.prototype.reponseTableur = function(reponse){
 
 };
 
-Fichier.prototype.printMenu = function(menu){
+Fichier.prototype.profondeurMenu = function(){
 
+}
+
+Fichier.prototype.getMenu = function(){
+    let menu = [];
+    for(let date in data){
+        let mapPov = data.get(date);
+        let menuPov = [];
+
+        for(let pov in menuPov){
+            let p = {text: pov, href: "#"+pov, click: clickMenu,tags: [0],nodes:[]};
+            menuPov.push(p);
+        }
+        let d = {text: date, href: "#"+date,tags: [menuPov.length],nodes:menuPov};
+        menu.push(d);
+    }
+    return menu;
 }
 
 Fichier.prototype.printVideo = function(carousel,date,pov){

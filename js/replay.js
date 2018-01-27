@@ -14,6 +14,7 @@ function updateSigninStatus(isSignedIn) {
     $("#btnDeconnexion").show();
     dossier = new Dossier();
     dossier.getDossier();
+    dossier.getMenu();
   } else {
     $("#btnConnexion").show();
     $("#btnDeconnexion").hide();
@@ -33,6 +34,10 @@ function Connexion(event) {
 function Deconnexion(event) {
   gapi.auth2.getAuthInstance().signOut();
   delete this.dossier;
+}
+
+function clickMenu(event){
+  console.log(event);
 }
 
 var defaultData = [
@@ -86,9 +91,3 @@ var defaultData = [
     tags: ['0']
   }
 ];
-
-$('#treeview_videos').treeview({
-  color: "#428bca",
-  showBorder: false,
-  data: defaultData
-});

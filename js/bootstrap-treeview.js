@@ -587,6 +587,7 @@
 				treeItem
 					.append($(_this.template.link)
 						.attr('href', node.href)
+						.click(node.click)
 						.append(node.text)
 					);
 			}

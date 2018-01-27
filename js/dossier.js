@@ -56,3 +56,23 @@ Dossier.prototype.reponseFichier = function(reponse){
         showErrorMessage("Erreur: " + reponse.error.message);
     }
 };
+
+Dossier.prototype.getMenu = function(){
+    let menu = [];
+
+    for(i=0;i<this.get('fichiers').length;i++){
+        let fichier = this.get('fichiers')[i];
+
+        let n = fichier.getMenu();
+        let f = {text: fichier.get("Name"), href: "#"+fichier.get("Name"),tags: [fichier.profondeurMenu()],nodes:n};
+
+        menu.push(f);
+    }
+
+    $('#treeview_videos').treeview({
+        color: "#428bca",
+        showBorder: false,
+        enableLinks :true,
+        data: menu
+      });
+}
