@@ -52,8 +52,7 @@ Dossier.prototype.reponseFichier = function(reponse){
             fichier.getFichier();
             this.get('fichiers').push(fichier);
         } 
-        console.log(this);
-        this.getMenu().bind(this);
+        this.getMenu();
     }else{
         showErrorMessage("Erreur: " + reponse.error.message);
     }
