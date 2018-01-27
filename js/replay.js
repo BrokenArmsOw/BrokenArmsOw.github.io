@@ -15,13 +15,14 @@ function updateSigninStatus(isSignedIn) {
     $("#loader").show();
     dossier = new Dossier();
     dossier.getDossier();
-    
+
     setTimeout(dossier.getMenu.bind(dossier), 2000);
     $("#loader").hide();
 
   } else {
     $("#btnConnexion").show();
     $("#btnDeconnexion").hide();
+    $("#loader").hide();
   }
 }
 
