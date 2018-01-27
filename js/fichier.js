@@ -18,7 +18,7 @@ var Fichier = function(Id,Name){
 };
 
 Fichier.prototype.getFichier = function(){
-    let requete = gapi.client.sheets.spreadsheets.values.batchGet({
+    let requete = gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: this.get('id'),
         ranges: 'Feuille 1!A:E',
     });
@@ -32,7 +32,7 @@ Fichier.prototype.reponseTableur = function(reponse){
 
         let mapDate = new Map();
         console.log(range);
-        
+
         for(i=0;i<range.values.length;i++){
             let row = range.values[i];
             let date = row[0];
