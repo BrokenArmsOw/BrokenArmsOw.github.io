@@ -109,16 +109,24 @@ Fichier.prototype.printVideo = function(date,pov){
         let indicator_li = $('<li data-target="#videos"></li>').attr("data-slide-to",i);
         indicators.append(indicator_li);
         
-        let lien = $("<a>Lien</a>").attr("href",video["URL"]);
+        let lien = $('<a target="_blank">Lien</a>').attr("href",video["URL"]);
         let carte = $("<h3></h3>").append(video["Carte"]);
 
         let caption = $('<div class="carousel-caption"></div>');
         caption.append(carte);
         caption.append(lien);
 
-        let img = $('<img class="d-block img-fluid" src="https://www.w3schools.com/howto/img_fjords.jpg" alt="Image">');
+        let youtube_video_id = video["URL"].match(/https\.\/\/youtu\.be\/(.{11})/).pop();
+        console.log(youtube_video_id);
+        let video_thumbnail;
         
-        let item = $('<div class="carousel-item"></div>').append(caption).append(img);
+        if (youtube_video_id.length == 11) {
+            video_thumbnail = $('<img class="d-block img-fluid" src="//img.youtube.com/vi/'+youtube_video_id+'/0.jpg">');
+        }else{
+            video_thumbnail = $('<img class="d-block img-fluid" src="..." alt="No thumbnail">');
+        }
+        
+        let item = $('<div class="carousel-item"></div>').append(caption).append(video_thumbnail);
         inner.append(item);
 
         if(i==0){
