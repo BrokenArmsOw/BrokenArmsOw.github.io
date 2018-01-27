@@ -68,10 +68,10 @@ Fichier.prototype.profondeurMenu = function(){
 
     let profondeur = 0;
     let data = this.get("data");
-    for(let date in data){
+    for(let date in data.keys()){
         let mapPov = data.get(date);
 
-        for(let pov in menuPov){
+        for(let pov in menuPov.keys()){
             profondeur++;
         }
 
@@ -85,12 +85,11 @@ Fichier.prototype.getMenu = function(){
     let menu = [];
     let data = this.get("data");
 
-    for(let date in data){
+    for(let date in data.keys()){
         let mapPov = data.get(date);
-        console.log(mapPov);
         let menuPov = [];
 
-        for(let pov in menuPov){
+        for(let pov in menuPov.keys()){
             let p = {text: pov, href: "#"+pov, click: clickMenu,tags: [0],nodes:[]};
             menuPov.push(p);
         }
