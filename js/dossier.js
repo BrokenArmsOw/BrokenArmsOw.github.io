@@ -51,6 +51,7 @@ Dossier.prototype.reponseDossier = function(reponse){
             fichier.get();
 
             let fs = this.get('fichiers');
+            console.log(fichier);
             fs.push(fichier);
         } 
     }else{
