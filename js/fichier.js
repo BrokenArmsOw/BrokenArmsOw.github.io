@@ -29,9 +29,7 @@ Fichier.prototype.getFichier = function(){
 Fichier.prototype.reponseTableur = function(reponse){
     if(!reponse.error){
         let range = reponse.result;
-        console.log(this);
         let mapDate = new Map();
-        console.log(range);
 
         for(i=0;i<range.values.length;i++){
             let row = range.values[i];
@@ -56,8 +54,10 @@ Fichier.prototype.reponseTableur = function(reponse){
                 mapPov.set(pov,povArray);
             }
 
-            povArray.push({"Carte" : map,"Url" : lien});
+            povArray.push({"Carte" : map,"URL" : lien});
         }
+
+        this.data = mapDate; 
     }else{
         showErrorMessage('Error: ' + reponse.result.error.message);
     }
@@ -68,6 +68,30 @@ Fichier.prototype.printMenu = function(menu){
 
 }
 
-Fichier.prototype.printVideo = function(tableau){
+Fichier.prototype.printVideo = function(carousel,date,pov){
+    let videos = data.get(date).get(pov);
+    let indicators = carousel.filter("#indicators_videos")[0];
+    let inner = carousel.filter("#inner_videos")[0];
 
+    for(i=0;i<videos.length;i++){
+        let video = videos[i];
+
+        let indicator_li = $('<li data-target="#videos"></li>').attr("data-slide-to",i);
+        indicators.append(indicator_li);
+
+
+        let lien = $("<a></a>").attr("href",video["URL"]);
+        lien.append(video["Carte"]);
+
+
+        let caption = $('<div class="carousel-caption"></div>');
+        caption.append(lien);
+
+        let item = $('<div class="item"></div>').append(caption);
+        inner.append(item);
+    }
+
+    indicators.first().addClass("active");
+
+    inner.first().addClass("active");
 }

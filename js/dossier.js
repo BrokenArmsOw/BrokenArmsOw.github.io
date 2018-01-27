@@ -22,15 +22,15 @@ Dossier.prototype.getDossier = function()
         q : "name = 'Replay' and mimeType = 'application/vnd.google-apps.folder' and sharedWithMe = true"
     });
 
-    requete.execute(this.reponseDossier);
+    requete.execute(this.reponseDossier.bind(this));
 };
 
 Dossier.prototype.reponseDossier = function(reponse){
     if (!reponse.error) {
         let folder = reponse.files[0];
 
-        this.dossier.set('id',folder.id);
-        this.dossier.lireFichiers();
+        this.set('id',folder.id);
+        this.lireFichiers();
     }else{
         showErrorMessage("Erreur: " + reponse.error.message);
     }
@@ -41,7 +41,7 @@ Dossier.prototype.lireFichiers = function(){
         q : "mimeType = 'application/vnd.google-apps.spreadsheet' and '"+ this.get('id') +"' in parents"
     });
     
-    requete.execute(this.reponseFichier);
+    requete.execute(this.reponseFichier.bind(this));
 };
 
 Dossier.prototype.reponseFichier = function(reponse){
@@ -50,7 +50,7 @@ Dossier.prototype.reponseFichier = function(reponse){
             let f = reponse.files[i];
             let fichier = new Fichier(f.id,f.name);
             fichier.getFichier();
-            this.dossier.get('fichiers').push(fichier);
+            this.get('fichiers').push(fichier);
         } 
     }else{
         showErrorMessage("Erreur: " + reponse.error.message);
