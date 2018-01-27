@@ -16,10 +16,13 @@ function updateSigninStatus(isSignedIn) {
     dossier = new Dossier();
     dossier.getDossier();
 
-    setTimeout(function() {
+    dossier.getMenu();
+    $("#loader").hide();
+
+    /*setTimeout(function() {
       dossier.getMenu.bind(dossier);
       $("#loader").hide();
-    }, 2000);
+    }, 2000);*/
     
   } else {
     $("#btnConnexion").show();

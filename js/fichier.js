@@ -2,7 +2,8 @@ var Fichier = function(Id,Name){
     var _ = {
         id : Id,
         name : Name,
-        data : null
+        data : null,
+        ready : false
     };   
     
     this.get = function(variable) 
@@ -58,6 +59,7 @@ Fichier.prototype.reponseTableur = function(reponse){
         }
 
         this.set("data",mapDate);
+        this.set("ready",false);
     }else{
         showErrorMessage('Error: ' + reponse.result.error.message);
     }
@@ -79,7 +81,7 @@ Fichier.prototype.profondeurMenu = function(){
         }
     }
     return profondeur;
-}
+};
 
 Fichier.prototype.getMenu = function(){
     let menu = [];
@@ -100,7 +102,7 @@ Fichier.prototype.getMenu = function(){
 
     
     return menu;
-}
+};
 
 Fichier.prototype.printVideo = function(date,pov){
     let data = this.get("data");
@@ -139,4 +141,4 @@ Fichier.prototype.printVideo = function(date,pov){
         }
     }
 
-}
+};
