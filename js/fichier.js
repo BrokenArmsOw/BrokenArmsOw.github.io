@@ -116,7 +116,7 @@ Fichier.prototype.printVideo = function(date,pov){
         caption.append(carte);
         caption.append(lien);
 
-        let youtube_video_id = video["URL"].match(/https\.\/\/youtu\.be\/(.{11})/).pop();
+        let youtube_video_id = video["URL"].match(/https\:\/\/youtu\.be\/(.{11})/).pop();
         console.log(youtube_video_id);
         let video_thumbnail;
         
