@@ -16,7 +16,7 @@ function updateSigninStatus(isSignedIn) {
     dossier = new Dossier();
     dossier.getDossier();
 
-    let isReady = function() {
+    /*let isReady = function() {
       if(dossier.ready()){
         dossier.getMenu.bind(dossier);
         $("#loader").hide();
@@ -24,12 +24,12 @@ function updateSigninStatus(isSignedIn) {
         setTimeout(isReady,1000);
       }
     };
-    setTimeout(isReady, 1000);
+    setTimeout(isReady, 1000);*/
 
-    /*setTimeout(function() {
+    setTimeout(function() {
       dossier.getMenu.bind(dossier);
       $("#loader").hide();
-    }, 2000);*/
+    }, 5000);
     
   } else {
     $("#btnConnexion").show();
