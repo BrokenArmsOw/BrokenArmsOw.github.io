@@ -14,6 +14,11 @@ function updateSigninStatus(isSignedIn) {
     $("#btnDeconnexion").show();
     dossier = new Dossier();
     dossier.getDossier();
+
+    while(!dossier.get('fichiers')){
+    }
+
+    dossier.getMenu();
   } else {
     $("#btnConnexion").show();
     $("#btnDeconnexion").hide();
