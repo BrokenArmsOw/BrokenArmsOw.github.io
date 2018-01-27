@@ -12,10 +12,12 @@ function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     $("#btnConnexion").hide();
     $("#btnDeconnexion").show();
+    $("#loader").show();
     dossier = new Dossier();
     dossier.getDossier();
-
+    
     setTimeout(dossier.getMenu.bind(dossier), 2000);
+    $("#loader").hide();
 
   } else {
     $("#btnConnexion").show();
