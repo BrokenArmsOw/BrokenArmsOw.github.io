@@ -109,17 +109,16 @@ Fichier.prototype.printVideo = function(date,pov){
         let indicator_li = $('<li data-target="#videos"></li>').attr("data-slide-to",i);
         indicators.append(indicator_li);
         
-
         let lien = $("<a></a>").attr("href",video["URL"]);
-        lien.append(video["Carte"]);
-        let img = $('<img src="https://www.w3schools.com/howto/img_fjords.jpg" alt="Image">');
+        let carte = $("<h3></h3>").append(video["Carte"]);
 
         let caption = $('<div class="carousel-caption"></div>');
+        caption.append(carte);
         caption.append(lien);
-        caption.append(img);
-        
 
-        let item = $('<div class="item"></div>').append(caption);
+        let img = $('<img src="https://www.w3schools.com/howto/img_fjords.jpg" alt="Image">');
+        
+        let item = $('<div class="item"></div>').append(caption).append(img);
         inner.append(item);
 
         if(i==0){
