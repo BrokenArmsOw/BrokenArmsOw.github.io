@@ -15,7 +15,7 @@ function updateSigninStatus(isSignedIn) {
     dossier = new Dossier();
     dossier.getDossier();
     
-    setTimeout(dossier.getMenu.bind(dossier), 1000);
+    setTimeout(dossier.getMenu.bind(dossier), 4000);
 
   } else {
     $("#btnConnexion").show();
