@@ -99,6 +99,8 @@ Fichier.prototype.getMenu = function(){
 Fichier.prototype.printVideo = function(carousel,date,pov){
     let data = this.get("data");
 
+    console.log(carousel);
+
     let videos = data.get(date).get(pov);
     let indicators = carousel.filter("#indicators_videos")[0];
     let inner = carousel.filter("#inner_videos")[0];

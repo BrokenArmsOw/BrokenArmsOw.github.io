@@ -596,25 +596,24 @@
 			}
 			else {
 				// otherwise just text
-				let item = $("<p></p>").append(node.text);
+				treeItem.append(node.text);
 
 				if(node.click){
-					item.click(node.click);
+					treeItem.click(node.click);
 				}
 
 				if(node.pov){
-					item.attr('pov',node.pov);
+					treeItem.attr('pov',node.pov);
 				}
 
 				if(node.date){
-					item.attr('date',node.date);
+					treeItem.attr('date',node.date);
 				}
 
 				if(node.fichier){
-					item.attr('fichier',node.fichier);
+					treeItem.attr('fichier',node.fichier);
 				}
-
-				treeItem.append(item);
+				
 			}
 
 			// Add tags as badges
