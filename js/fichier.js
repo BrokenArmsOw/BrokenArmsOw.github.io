@@ -67,7 +67,7 @@ Fichier.prototype.reponseTableur = function(reponse){
 Fichier.prototype.profondeurMenu = function(){
 
     let profondeur = 0;
-    for(let date in data){
+    for(let date in this.get('data')){
         let mapPov = data.get(date);
 
         for(let pov in menuPov){
@@ -82,7 +82,7 @@ Fichier.prototype.profondeurMenu = function(){
 
 Fichier.prototype.getMenu = function(){
     let menu = [];
-    for(let date in data){
+    for(let date in this.get('data')){
         let mapPov = data.get(date);
         let menuPov = [];
 
