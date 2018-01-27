@@ -65,7 +65,7 @@ Dossier.prototype.getMenu = function(){
 
         let n = fichier.getMenu();
 
-        while(!fichier.get("ready")){}
+        while(!fichier.get("ready")){console.log("not ready");};
 
         let f = {text: fichier.get("name"),tags: [fichier.profondeurMenu()],nodes:n};
 
