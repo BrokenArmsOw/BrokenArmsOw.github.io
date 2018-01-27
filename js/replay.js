@@ -17,8 +17,8 @@ function updateSigninStatus(isSignedIn) {
     dossier.getDossier();
 
     setTimeout(function() {
-      $("#loader").hide();
       dossier.getMenu.bind(dossier);
+      $("#loader").hide();
     }, 2000);
     
   } else {
