@@ -13,7 +13,9 @@ function updateSigninStatus(isSignedIn) {
     $("#btnConnexion").hide();
     $("#btnDeconnexion").show();
     dossier = new Dossier();
-    Promise.resolve(dossier.getDossier).then(dossier.getMenu.bind(dossier));
+    dossier.getDossier();
+    
+    setTimeout(dossier.getMenu.bind(dossier), 1000);
 
   } else {
     $("#btnConnexion").show();
