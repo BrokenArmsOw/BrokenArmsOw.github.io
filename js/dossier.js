@@ -59,17 +59,15 @@ Dossier.prototype.reponseFichier = function(reponse){
 
 Dossier.prototype.getMenu = function(){
     let menu = [];
-
-    for(i=0;i<this.get('fichiers').length;i++){
-        let fichier = this.get('fichiers')[i];
+    let fichiers = this.get("fichiers");
+    
+    for(let [name, fichier] of fichiers.entries()){
 
         let n = fichier.getMenu();
         let f = {text: fichier.get("name"), href: "#"+fichier.get("name"),tags: [fichier.profondeurMenu()],nodes:n};
 
         menu.push(f);
     }
-
-    console.log(menu);
 
     $('#treeview_videos').treeview({
         color: "#428bca",
