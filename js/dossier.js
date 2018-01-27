@@ -28,6 +28,7 @@ Dossier.prototype.getDossier = function()
 Dossier.prototype.reponseDossier = function(reponse){
     if (!reponse.error) {
         let folder = reponse.files[0];
+        console.log(this);
         this.set('id',folder.id);
         this.lireFichiers();
     }else{
