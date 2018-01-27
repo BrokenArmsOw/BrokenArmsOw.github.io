@@ -109,15 +109,7 @@ Fichier.prototype.printVideo = function(date,pov){
         let indicator_li = $('<li data-target="#videos"></li>').attr("data-slide-to",i);
         indicators.append(indicator_li);
         
-        let lien = $('<a target="_blank">Lien</a>').attr("href",video["URL"]);
-        let carte = $("<h3></h3>").append(video["Carte"]);
-
-        let caption = $('<div class="carousel-caption"></div>');
-        caption.append(carte);
-        caption.append(lien);
-
         let youtube_video_id = video["URL"].match(/https\:\/\/youtu\.be\/(.{11})/).pop();
-        console.log(youtube_video_id);
         let video_thumbnail;
         
         if (youtube_video_id.length == 11) {
@@ -125,8 +117,15 @@ Fichier.prototype.printVideo = function(date,pov){
         }else{
             video_thumbnail = $('<img class="d-block img-fluid" src="..." alt="No thumbnail">');
         }
+
+        let lien = $('<a target="_blank"></a>').attr("href",video["URL"]).append(video_thumbnail);
+        let carte = $("<h3></h3>").append(video["Carte"]);
+
+        let caption = $('<div class="carousel-caption"></div>');
+        caption.append(carte);
+        caption.append(lien);
         
-        let item = $('<div class="carousel-item"></div>').append(video_thumbnail).append(caption);
+        let item = $('<div class="carousel-item"></div>').append(caption);
         inner.append(item);
 
         if(i==0){
