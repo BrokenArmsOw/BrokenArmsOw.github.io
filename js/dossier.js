@@ -43,7 +43,7 @@ Dossier.prototype.lireFichiers = function(){
     requete.execute(this.reponseFichier);
 };
 
-Dossier.prototype.reponseDossier = function(reponse){
+Dossier.prototype.reponseFichier = function(reponse){
     if (!reponse.error) {
         for(i=0;i<reponse.files.length;i++){
             let f = reponse.files[i];
@@ -51,7 +51,6 @@ Dossier.prototype.reponseDossier = function(reponse){
             fichier.getFichier();
 
             let fs = this.get('fichiers');
-            console.log(fichier);
             fs.push(fichier);
         } 
     }else{
