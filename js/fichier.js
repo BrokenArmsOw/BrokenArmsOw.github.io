@@ -121,7 +121,7 @@ Fichier.prototype.printVideo = function(date,pov){
         let video_thumbnail;
         
         if (youtube_video_id.length == 11) {
-            video_thumbnail = $('<img class="d-block img-fluid" src="//img.youtube.com/vi/'+youtube_video_id+'/0.jpg">');
+            video_thumbnail = $('<img src="//img.youtube.com/vi/'+youtube_video_id+'/0.jpg">');
         }else{
             video_thumbnail = $('<img class="d-block img-fluid" src="..." alt="No thumbnail">');
         }
