@@ -20,7 +20,7 @@ var Fichier = function(Id,Name){
 Fichier.prototype.getFichier = function(){
     let requete = gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: this.get('id'),
-        ranges: 'Feuille 1!A:E',
+        range: 'Feuille 1!A2:E',
     });
 
     requete.execute(this.reponseTableur);
