@@ -64,7 +64,7 @@ Dossier.prototype.getMenu = function(){
         let fichier = this.get('fichiers')[i];
 
         let n = fichier.getMenu();
-        let f = {text: fichier.get("Name"), href: "#"+fichier.get("Name"),tags: [fichier.profondeurMenu()],nodes:n};
+        let f = {text: fichier.get("name"), href: "#"+fichier.get("name"),tags: [fichier.profondeurMenu()],nodes:n};
 
         menu.push(f);
     }
