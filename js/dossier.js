@@ -64,7 +64,7 @@ Dossier.prototype.getMenu = function(){
     for(let [name, fichier] of fichiers.entries()){
 
         let n = fichier.getMenu();
-        let f = {text: fichier.get("name"), href: "#"+fichier.get("name"),tags: [fichier.profondeurMenu()],nodes:n};
+        let f = {text: fichier.get("name"),tags: [fichier.profondeurMenu()],nodes:n};
 
         menu.push(f);
     }
@@ -72,7 +72,6 @@ Dossier.prototype.getMenu = function(){
     $('#treeview_videos').treeview({
         color: "#428bca",
         showBorder: false,
-        enableLinks :true,
         data: menu
       });
 }
