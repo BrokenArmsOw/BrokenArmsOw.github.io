@@ -71,7 +71,7 @@ Fichier.prototype.profondeurMenu = function(){
     let profondeur = 0;
     let data = this.get("data");
 
-    if(data){
+    
         for(let [date, mapPov] of data.entries()){
             for(let [pov, tab] of mapPov.entries()){
                 profondeur++;
@@ -79,7 +79,7 @@ Fichier.prototype.profondeurMenu = function(){
     
             profondeur++;
         }
-    }
+    
     return profondeur;
 };
 
@@ -87,7 +87,7 @@ Fichier.prototype.getMenu = function(){
     let menu = [];
     let data = this.get("data");
 
-    if(data){
+    
         for(let [date, mapPov] of data.entries()){
             let menuPov = [];
             for(let [pov, tab] of mapPov.entries()){
@@ -98,7 +98,7 @@ Fichier.prototype.getMenu = function(){
             let d = {text: date, tags: [menuPov.length],nodes:menuPov};
             menu.push(d);
         }
-    }
+    
 
     
     return menu;
