@@ -100,7 +100,6 @@ Fichier.prototype.printVideo = function(date,pov){
     let data = this.get("data");
 
     let videos = data.get(date).get(pov);
-    console.log(videos);
     let indicators = $("#indicators_videos");
     let inner = $("#inner_videos");
 
@@ -122,7 +121,9 @@ Fichier.prototype.printVideo = function(date,pov){
         inner.append(item);
     }
 
+    console.log(indicators.filter(":first"));
+    console.log(inner.filter(":first"));
+    
     indicators.filter(":first").addClass("active");
-
     inner.filter(":first").addClass("active");
 }
