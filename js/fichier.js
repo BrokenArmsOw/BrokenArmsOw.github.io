@@ -121,9 +121,9 @@ Fichier.prototype.printVideo = function(date,pov){
         let video_thumbnail;
         
         if (youtube_video_id.length == 11) {
-            video_thumbnail = $('<img class="d-block img-fluid" src="https://img.youtube.com/vi/'+youtube_video_id+'/hqdefault.jpg">');
+            video_thumbnail = $('<img class="d-block img-fluid center-block" src="https://img.youtube.com/vi/'+youtube_video_id+'/hqdefault.jpg">');
         }else{
-            video_thumbnail = $('<img class="d-block img-fluid" src="..." alt="No thumbnail">');
+            video_thumbnail = $('<img class="d-block img-fluid center-block" src="..." alt="No thumbnail">');
         }
 
         let lien = $('<a target="_blank"></a>').attr("href",video["URL"]).append(video_thumbnail);
