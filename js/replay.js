@@ -18,14 +18,13 @@ function updateSigninStatus(isSignedIn) {
 
     let isReady = function() {
       if(dossier.ready()){
+        $("#loader").hide();
         dossier.getMenu();
       }else{
-        setTimeout(isReady,1000);
+        setTimeout(isReady,5000);
       }
     };
-    setTimeout(isReady, 1000);
-
-    //setTimeout(dossier.getMenu.bind(dossier), 5000);
+    setTimeout(isReady, 5000);
     
   } else {
     $("#btnConnexion").show();
