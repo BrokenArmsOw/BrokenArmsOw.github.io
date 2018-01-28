@@ -34,7 +34,7 @@
     display : none;
 }
 
-.carousel-control-next-icon .carousel-control-prev-icon{
+.carousel-control-next .carousel-control-prev{
     color: #428bca;
 }
 
