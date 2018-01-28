@@ -32,6 +32,9 @@
 
 #videos{
     display : none;
+}
+
+.carousel-control-next-icon .carousel-control-prev-icon{
     color: #428bca;
 }
 
