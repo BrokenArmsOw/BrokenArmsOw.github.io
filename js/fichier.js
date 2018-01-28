@@ -126,7 +126,7 @@ Fichier.prototype.printVideo = function(date,pov){
             video_thumbnail = $('<img class="d-block img-fluid center-block" src="..." alt="No thumbnail">');
         }
 
-        let lien = $('<a target="_blank"></a>').attr("href",video["URL"]).append(video_thumbnail);
+        let lien = $('<a class="center-block" target="_blank"></a>').attr("href",video["URL"]).append(video_thumbnail);
         let carte = $("<h3></h3>").append(video["Carte"]);
 
         let caption = $('<div class="carousel-caption"></div>');
