@@ -26,10 +26,7 @@ function updateSigninStatus(isSignedIn) {
     };
     setTimeout(isReady, 1000);*/
 
-    setTimeout(function() {
-      dossier.getMenu.bind(dossier);
-      $("#loader").hide();
-    }, 5000);
+    setTimeout(dossier.getMenu.bind(dossier), 5000);
     
   } else {
     $("#btnConnexion").show();
