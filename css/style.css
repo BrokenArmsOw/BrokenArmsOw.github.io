@@ -32,11 +32,9 @@
 
 #videos{
     display : none;
+    background-color:#F5F5F5;
 }
 
-.carousel-control {
-    color: #428bca;
-}
 
 #loader {
     border: 16px solid #f3f3f3;
