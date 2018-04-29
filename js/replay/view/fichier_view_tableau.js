@@ -4,7 +4,7 @@ Fichier_View_Tableau.prototype.show = function(fichier,date,pov){
     let data = fichier.get("data");
     let videos = data.get(date).get(pov);
 
-    let tableau = $('<table></table>');
+    let tableau = $('<table class="table"></table>');
     let tr = $('<tr></tr>');
 
     for(i=0;i<videos.length;i++){
