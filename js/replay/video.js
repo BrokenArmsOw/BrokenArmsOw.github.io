@@ -1,7 +1,7 @@
 var Video = function(Carte,Url){
     var _ = {
         carte:Carte,
-        url : Url,
+        url : Url
     };   
     
     this.get = function(variable) 
@@ -16,7 +16,7 @@ var Video = function(Carte,Url){
     };
 
     this.getId = function(){
-        return _[url].match(/https\:\/\/youtu\.be\/(.{11})/).pop();
+        return _["url"].match(/https\:\/\/youtu\.be\/(.{11})/).pop();
     };
 };
 
