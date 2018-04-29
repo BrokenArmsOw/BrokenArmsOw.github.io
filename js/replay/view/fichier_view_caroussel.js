@@ -43,7 +43,7 @@ Fichier_View_Caroussel.prototype.show = function(fichier,date,pov){
     let data = fichier.get("data");
     let videos = data.get(date).get(pov);
 
-    let carousel = $('<div id="caroussel_video" class="carousel slide col-sm-6" data-ride="carousel"></div>');
+    let carousel = $('<div id="caroussel_video" class="carousel slide" data-ride="carousel"></div>');
     let indicators = $('<ol class="carousel-indicators" id ="indicators_videos"></ol>');
     let inner = $('<div class="carousel-inner" role="listbox" id = "inner_videos"></div>');
     let controlPrev = $('<a class="carousel-control-prev" href="#caroussel_video" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>');
