@@ -21,7 +21,7 @@ var Fichier_View = function(){
 
 Fichier_View.prototype.show = function(fichier,date,vod){
 
-    switch(currentAffichage){
+    switch(this.get("currentAffichage")){
         case Fichier_View_Type.CAROUSSEL:
             this.get("caroussel").show(fichier,date,vod);
         break;
