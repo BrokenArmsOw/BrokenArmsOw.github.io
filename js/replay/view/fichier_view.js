@@ -2,9 +2,9 @@ var Fichier_View_Type = Object.freeze({CAROUSSEL:1, TABLEAU:2});
 
 var Fichier_View = function(){
     var _ = {
-        caroussel = new Fichier_View_Caroussel(),
-        tableau = new Fichier_View_Tableau(),
-        currentAffichage = Fichier_View_Type.CAROUSSEL
+        caroussel : new Fichier_View_Caroussel(),
+        tableau : new Fichier_View_Tableau(),
+        currentAffichage : Fichier_View_Type.CAROUSSEL
     };   
     
     this.get = function(variable) 
