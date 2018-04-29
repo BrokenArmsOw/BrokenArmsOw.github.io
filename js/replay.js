@@ -70,7 +70,7 @@ function clickMenu(event){
 
   let fichier = dossier.get("fichiers").get(fichierName);
 
-  fichier_View.show(fichier,date,pov);
+  fichier_view.show(fichier,date,pov);
 }
 
 function clickSwitch(event){
