@@ -49,7 +49,11 @@ function Connexion(event) {
  *  Sign out the user upon button click.
  */
 function Deconnexion(event) {
+  $("#contenu").hide();
+
   $("#videos").empty();
+  $("#treeview_list").empty();
+  
   delete this.dossier;
   gapi.auth2.getAuthInstance().signOut();
 }
