@@ -22,15 +22,15 @@ var Fichier_View = function(){
     };
 };
 
-Fichier_View.prototype.show = function(fichier,date,vod){
+Fichier_View.prototype.show = function(fichier,date,pov){
 
     switch(this.get("currentAffichage")){
         case Fichier_View_Type.CAROUSSEL:
-            this.get("caroussel").show(fichier,date,vod);
+            this.get("caroussel").show(fichier,date,pov);
         break;
 
         case Fichier_View_Type.TABLEAU:
-            this.get("tableau").show(fichier,date,vod);
+            this.get("tableau").show(fichier,date,pov);
         break;
     }
 
