@@ -4,7 +4,10 @@ var Fichier_View = function(){
     var _ = {
         caroussel : new Fichier_View_Caroussel(),
         tableau : new Fichier_View_Tableau(),
-        currentAffichage : Fichier_View_Type.CAROUSSEL
+        currentAffichage : Fichier_View_Type.CAROUSSEL,
+        lastFichier : null,
+        lastPov : "",
+        lastDate : ""
     };   
     
     this.get = function(variable) 
@@ -31,5 +34,11 @@ Fichier_View.prototype.show = function(fichier,date,vod){
         break;
     }
 
+    this.set("lastFichier",fichier);
+    this.set("lastDate",date);
+    this.set("lastPov",pov);
 };
 
+Fichier_View.prototype.refresh = function() {
+    this.show(this.get("lastFichier"),this.get("lastDate"),this.get("lastPov"));
+};

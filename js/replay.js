@@ -79,4 +79,6 @@ function clickSwitch(event){
   } else {
     fichier_view.set("currentAffichage",Fichier_View_Type.TABLEAU);
   }
+  
+  fichier_view.refresh();
 }

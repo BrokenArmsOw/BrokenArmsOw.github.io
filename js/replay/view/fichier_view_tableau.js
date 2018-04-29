@@ -22,5 +22,7 @@ Fichier_View_Tableau.prototype.show = function(fichier,date,pov){
         tr.append(td);
     }
 
+    tableau.append(tr);
+
     $("#videos").append(tableau);
 };
