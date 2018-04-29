@@ -3,7 +3,7 @@ var files = ['video','fichier','dossier','view/fichier_view_caroussel','view/fic
 loadScripts(directory,files);
 
 var dossier;
-var fichier_view = new Fichier_View();
+var fichier_view;
 
 function showErrorMessage(errorMessage){
   $("#content").html(errorMessage);
@@ -18,6 +18,7 @@ function updateSigninStatus(isSignedIn) {
     $("#btnConnexion").hide();
     $("#btnDeconnexion").show();
     $("#loader").show();
+    fichier_view = new Fichier_View();
     dossier = new Dossier();
     dossier.getDossier();
 
