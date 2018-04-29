@@ -1,11 +1,9 @@
 var directory = 'js/replay/';
-var files = ['dossier', 'fichier', 'video','view/fichier_view','view/fichier_view_caroussel','view/fichier_view_tableau'];
+var files = ['video','fichier','dossier','view/fichier_view_caroussel','view/fichier_view_tableau','view/fichier_view'];
 loadScripts(directory,files);
 
 var dossier;
 var fichier_view = new Fichier_View();
-
-
 
 function showErrorMessage(errorMessage){
   $("#content").html(errorMessage);
