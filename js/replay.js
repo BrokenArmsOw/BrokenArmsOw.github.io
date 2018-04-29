@@ -1,4 +1,11 @@
+var directory = 'js/replay/';
+var files = ['dossier', 'fichier', 'video','view/fichier_view','view/fichier_view_caroussel','view/fichier_view_tableau'];
+loadScripts(directory,files);
+
 var dossier;
+var fichier_view = new Fichier_View();
+
+
 
 function showErrorMessage(errorMessage){
   $("#content").html(errorMessage);
@@ -19,6 +26,7 @@ function updateSigninStatus(isSignedIn) {
     let isReady = function() {
       if(dossier.ready()){
         $("#loader").hide();
+        $("#contenu").show();
         dossier.getMenu();
       }else{
         setTimeout(isReady,5000);
@@ -43,21 +51,29 @@ function Connexion(event) {
  *  Sign out the user upon button click.
  */
 function Deconnexion(event) {
-  gapi.auth2.getAuthInstance().signOut();
+  $("#videos").empty();
   delete this.dossier;
+  gapi.auth2.getAuthInstance().signOut();
 }
 
 function clickMenu(event){
-  let indicators = $("#indicators_videos").empty();
-  let inner = $("#inner_videos").empty();
+  $("#videos").empty();
 
   let target = event.target;
 
   let pov = target.getAttribute("pov");
   let date = target.getAttribute("date");
-  let fichier = target.getAttribute("fichier");
+  let fichierName = target.getAttribute("fichier");
 
-  dossier.get("fichiers").get(fichier).printVideo(date,pov);
+  let fichier = dossier.get("fichiers").get(fichierName);
 
-  $("#videos").show(); 
+  fichier_View.show(fichier,date,pov);
+}
+
+function clickSwitch(event){
+  if (event.target.checked) {
+    fichier_view.set("currentAffichage",Fichier_View_Type.CAROUSSEL);
+  } else {
+    fichier_view.set("currentAffichage",Fichier_View_Type.TABLEAU);
+  }
 }

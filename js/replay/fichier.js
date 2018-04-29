@@ -55,7 +55,7 @@ Fichier.prototype.reponseTableur = function(reponse){
                 mapPov.set(pov,povArray);
             }
 
-            povArray.push({"Carte" : map,"URL" : lien});
+            povArray.push(new Video(map,lien));
         }
 
         this.set("data",mapDate);
@@ -71,7 +71,6 @@ Fichier.prototype.profondeurMenu = function(){
     let profondeur = 0;
     let data = this.get("data");
 
-    
         for(let [date, mapPov] of data.entries()){
             for(let [pov, tab] of mapPov.entries()){
                 profondeur++;
@@ -87,7 +86,6 @@ Fichier.prototype.getMenu = function(){
     let menu = [];
     let data = this.get("data");
 
-    
         for(let [date, mapPov] of data.entries()){
             let menuPov = [];
             for(let [pov, tab] of mapPov.entries()){
@@ -99,46 +97,5 @@ Fichier.prototype.getMenu = function(){
             menu.push(d);
         }
     
-
-    
     return menu;
-};
-
-Fichier.prototype.printVideo = function(date,pov){
-    let data = this.get("data");
-
-    let videos = data.get(date).get(pov);
-    let indicators = $("#indicators_videos");
-    let inner = $("#inner_videos");
-
-    for(i=0;i<videos.length;i++){
-        let video = videos[i];
-
-        let indicator_li = $('<li data-target="#videos"></li>').attr("data-slide-to",i);
-        indicators.append(indicator_li);
-        
-        let youtube_video_id = video["URL"].match(/https\:\/\/youtu\.be\/(.{11})/).pop();
-        let video_thumbnail;
-        
-        if (youtube_video_id.length == 11) {
-            video_thumbnail = $('<img class="d-block img-fluid center-block" src="https://img.youtube.com/vi/'+youtube_video_id+'/hqdefault.jpg">');
-        }else{
-            video_thumbnail = $('<img class="d-block img-fluid center-block" src="..." alt="No thumbnail">');
-        }
-
-        let lien = $('<a class="center-block" target="_blank"></a>').attr("href",video["URL"]).append(video_thumbnail);
-        let carte = $("<h3></h3>").append(video["Carte"]);
-
-        let caption = $('<div class="carousel-caption"></div>');
-        caption.append(carte);
-        
-        let item = $('<div class="carousel-item"></div>').append(lien).append(caption);
-        inner.append(item);
-
-        if(i==0){
-            indicator_li.addClass("active");
-            item.addClass("active");
-        }
-    }
-
 };

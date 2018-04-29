@@ -24,19 +24,18 @@ function handleClientLoad() {
    *  listeners.
    */
   function initClient() {
-	gapi.client.init({
-	  apiKey: API_KEY,
-	  clientId: CLIENT_ID,
-	  discoveryDocs: DISCOVERY_DOCS,
-	  scope: SCOPES
-	}).then(function () {
-	  // Listen for sign-in state changes.
-	  gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-	  // Handle the initial sign-in state.
-	  updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-	});
+		gapi.client.init({
+			apiKey: API_KEY,
+			clientId: CLIENT_ID,
+			discoveryDocs: DISCOVERY_DOCS,
+			scope: SCOPES
+		}).then(function () {
+			// Listen for sign-in state changes.
+			gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+			// Handle the initial sign-in state.
+			updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+		});
   }
-
 
 //Initialisation de la gestion des événements onClick sur la page
 function initialiser()
@@ -44,7 +43,8 @@ function initialiser()
 	//Création d'un tableau associant l'id d'un élément et la fonction à appeler en cas de clic sur cet élement
 	window.evenementsClic = {
 		'btnConnexion' : Connexion,
-		'btnDeconnexion' : Deconnexion
+		'btnDeconnexion' : Deconnexion,
+		'btnSwitchAffichage' : clickSwitch
 	};
 
 	//Ajout d'un écouteur d'événement onClick sur la page
@@ -56,13 +56,23 @@ function initialiser()
 function gererClic(evenement)
 {
 	//Récupère l'id de l'élément sur lequel l'utilisateur a cliqué
-	var targetID = evenement.target.id;
+	let targetID = evenement.target.id;
 
 	//Exécute le gestionnaire d'événement onClick correspondant à l'élément cible
 	if(window.evenementsClic[targetID])
 	{
 		window.evenementsClic[targetID](evenement);
 	}
+}
+
+function loadScripts(directory,files){
+  let extension = '.js';  
+  for (let file of files){ 
+      let path = directory + file + extension; 
+      let script = document.createElement("script");
+      script.src = path;
+      document.body.appendChild(script);
+  } 
 }
 
 //Lie la fonction initialiser au gestionnaire d'événément onLoad de la page
