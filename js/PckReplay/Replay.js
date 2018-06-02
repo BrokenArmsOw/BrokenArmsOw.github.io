@@ -9,7 +9,7 @@ import ControleurReplay from './ControleurReplay.js';
 
 import DossierReplay from './DonneesReplay/DossierReplay.js';
 
-import * as GUI from '../GUI/';
+import * as GUI from '../GUI/*.js';
 
 class Replay{
 	constructor(Dossier,Controleur){

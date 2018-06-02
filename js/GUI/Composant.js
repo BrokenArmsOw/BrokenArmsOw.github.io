@@ -26,4 +26,4 @@ class Composant{
 
 }
 
-export {Composant};
+export {Composant as default};

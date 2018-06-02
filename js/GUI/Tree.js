@@ -3,8 +3,6 @@
 * Class: Tree
 */
 
-import Tree from './Tree.js';
-
 class Tree{
 	constructor(Father,Data,DataName){
 

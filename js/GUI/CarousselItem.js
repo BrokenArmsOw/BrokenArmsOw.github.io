@@ -47,4 +47,4 @@ class CarousselItem{
 
 }
 
-export {CarousselItem};
+export {CarousselItem as default};
