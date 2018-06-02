@@ -27,6 +27,7 @@ class Replay{
 		this.currentAffichage = AffichageContenu.CAROUSSEL;
 		this.controleur = Controleur;
 		this.dossier = Dossier;
+		this.chargementIcon;
 	}
 
 	/**
@@ -35,8 +36,8 @@ class Replay{
 	charger(){
 		this.controleur.getDossier("Replay");
 
-		let chargementIcon = new ChargementIcon();
-		chargementIcon.afficher($("#contenu"));
+		this.chargementIcon = new ChargementIcon();
+		this.chargementIcon.afficher($("#contenu"));
 		
 		initialiserBouton();
 	};
@@ -150,7 +151,7 @@ class Replay{
 		}else{
 			let isReady = function() {
 				if(this.dossier.getCharger()){
-					delete chargementIcon;
+					this.chargementIcon.cacher();
 	
 					//Recuperer le menu treeview
 					//Creation des données
