@@ -3,7 +3,7 @@
 * Class: Initialisation
 */
 
-import Connexion from 'js/Connexion.js';
+import Connexion from './Connexion.js';
 
 class Initialisation{
 	constructor(){
