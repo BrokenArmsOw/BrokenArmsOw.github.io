@@ -67,20 +67,16 @@
       let extension = '.js';  
 
       for(let [dossier, fichiers] of repertoire.entries()){
-        let chemin = repertoire;
-
         for(let fichier of fichiers){
-          chemin += fichier + extension;
           let script = document.createElement("script");
-          script.src = chemin;
+          script.src = dossier + fichier + extension;
           script.type = 'module';
           document.body.appendChild(script);
         }
-      } 
-    }
+      }
 
     let repertoire = new Map();
-    repertoire.set('js/',['Sujet,Initialisation,Connexion']);
+    repertoire.set('js/',['Sujet','Initialisation','Connexion']);
     repertoire.set('js/Données/',['Dossier','Fichier']);
     repertoire.set('js/GUI/',['Composant','Caroussel','CarousselItem','Formulaire','Tableau','Tree','TreeView','ChargementIcon']);
     repertoire.set('js/PckReplay/DonnéesReplay/',['DossierReplay','FichierReplay','Pov','Video']);

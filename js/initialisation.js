@@ -36,30 +36,6 @@ class Initialisation{
 		} 
 	};
 
-
-	/*
-	* @param repertoire
-	*
-	* @param fichiers
-	*
-	*/
-	static chargerScripts(repertoire){
-		let extension = '.js';  
-
-		for(let [dossier, fichiers] of repertoire.entries()){
-			let chemin = repertoire;
-
-			for(let fichier of fichiers){
-				chemin += fichier + extension;
-				let script = document.createElement("script");
-				script.src = chemin;
-				script.type = 'module';
-				document.body.appendChild(script);
-			}
-		} 
-	};
-
-
 	/*
 	*/
 	initialiserGoogleApi(){
