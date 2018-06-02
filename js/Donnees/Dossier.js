@@ -89,4 +89,4 @@ class Dossier{
 
 }
 
-export {Dossier};
+export {Dossier as default};

@@ -67,4 +67,4 @@ class Video{
 
 }
 
-export {Video};
+export {Video as default};

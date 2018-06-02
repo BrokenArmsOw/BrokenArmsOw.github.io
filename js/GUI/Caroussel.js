@@ -62,4 +62,4 @@ class Caroussel extends Composant {
 
 }
 
-export {Caroussel};
+export {Caroussel as default};

@@ -6,10 +6,18 @@
 var AffichageContenu = Object.freeze({CAROUSSEL:1, TABLEAU:2});
 
 import ControleurReplay from './ControleurReplay.js';
-
 import DossierReplay from './DonneesReplay/DossierReplay.js';
+import Composant from '../GUI/Composant.js';
 
-import * as GUI from '../GUI/*.js';
+import Caroussel from '../GUI/Caroussel.js';
+import CarousselItem from '../GUI/CarousselItem.js';
+
+import ChargementIcon from '../GUI/ChargementIcon.js';
+import Formulaire from '../GUI/Formulaire.js';
+import Tableau from '../GUI/Tableau.js';
+
+import TreeView from '../GUI/TreeView.js';
+import Tree from '../GUI/Tree.js';
 
 class Replay{
 	constructor(Dossier,Controleur){
@@ -27,7 +35,7 @@ class Replay{
 	charger(){
 		this.controleur.getDossier("Replay");
 
-		let chargementIcon = new GUI.ChargementIcon();
+		let chargementIcon = new ChargementIcon();
 		chargementIcon.afficher($("#contenu"));
 		
 		initialiserBouton();
@@ -41,11 +49,11 @@ class Replay{
 		$("#videos").show();
 		switch(this.currentAffichage){
 			case AffichageContenu.CAROUSSEL:
-				this.contenu = new GUI.Carrousel(creationContenuCaroussel(NomFichier,DatePov,Joueur));
+				this.contenu = new Carrousel(creationContenuCaroussel(NomFichier,DatePov,Joueur));
 			break;
 	
 			case AffichageContenu.TABLEAU:
-				this.contenu = new GUI.Tableau(creationContenuTableau(NomFichier,DatePov,Joueur));
+				this.contenu = new Tableau(creationContenuTableau(NomFichier,DatePov,Joueur));
 			break;
 		}
 
@@ -67,17 +75,17 @@ class Replay{
 	}
 
 	creationMenu(){
-		let root = new GUI.Tree(null,"");
+		let root = new Tree(null,"");
 
 		for(let [nom, fichier] of this.dossier.getFichiers().entries()){
-			let sonFichier = new GUI.Tree(root,fichier.getNom());
+			let sonFichier = new Tree(root,fichier.getNom());
 			
 			for(let [date, povs] of fichier.getPovs().entries()){
 
-				let sonDate = new GUI.Tree(sonFichier,date);
+				let sonDate = new Tree(sonFichier,date);
 
 				for(let [joueur, pov] of povs.entries()){
-					let sonPov = new GUI.Tree(sonDate,joueur);
+					let sonPov = new Tree(sonDate,joueur);
 				}
 			}
 
@@ -101,7 +109,7 @@ class Replay{
 			let caption = $("<h3>"+video.getCarte()+"</h3>");
 			let data = video.getBaliseLien();
 
-			carousselData.append(new GUI.CarousselItem(caption,data));
+			carousselData.append(new CarousselItem(caption,data));
 		}
 		
 		return carousselData;
@@ -146,13 +154,14 @@ class Replay{
 	
 					//Recuperer le menu treeview
 					//Creation des données
-					this.menu = new GUI.TreeView(creationMenu(),this.clickMenu);
+					this.menu = new TreeView(creationMenu(),this.clickMenu);
 				}else{
 					setTimeout(isReady,5000);
 				}
 			};
 	
 			setTimeout(isReady, 5000); 
+			this.menu.afficher($("#menu")); 
 		}
 		
 		if(this.contenu){
@@ -164,4 +173,4 @@ class Replay{
 
 }
 
-export {Replay};
+export {Replay as default};

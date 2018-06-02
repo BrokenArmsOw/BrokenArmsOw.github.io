@@ -24,4 +24,4 @@ class ChargementIcon extends Composant {
 
 }
 
-export {ChargementIcon};
+export {ChargementIcon as default};

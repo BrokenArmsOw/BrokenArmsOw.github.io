@@ -42,4 +42,4 @@ class Pov{
 
 }
 
-export {Pov};
+export {Pov as default};

@@ -31,4 +31,4 @@ class TreeView extends Composant {
 
 }
 
-export {TreeView};
+export {TreeView as default};

@@ -3,7 +3,7 @@
 * Class: DossierReplay
 */
 
-import Dossier from 'js/Donnees/Dossier.js';
+import Dossier from '../../Donnees/Dossier.js';
 
 import FichierReplay from './FichierReplay.js';
 
@@ -142,4 +142,4 @@ class DossierReplay extends Dossier {
 
 }
 
-export {DossierReplay};
+export {DossierReplay as default};

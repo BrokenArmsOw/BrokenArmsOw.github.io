@@ -142,4 +142,4 @@ class Initialisation{
 
 }
 
-export {Initialisation};
+export {Initialisation as default};

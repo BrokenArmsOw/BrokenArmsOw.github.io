@@ -27,4 +27,4 @@ class Sujet{
 
 }
 
-export {Sujet};
+export {Sujet as default};

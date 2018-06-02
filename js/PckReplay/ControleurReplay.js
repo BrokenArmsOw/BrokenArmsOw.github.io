@@ -21,4 +21,4 @@ class ControleurReplay extends Sujet {
 
 }
 
-export {ControleurReplay};
+export {ControleurReplay as default};

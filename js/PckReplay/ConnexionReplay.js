@@ -49,4 +49,4 @@ class ConnexionReplay extends Connexion {
 
 }
 
-export {ConnexionReplay};
+export {ConnexionReplay as default};

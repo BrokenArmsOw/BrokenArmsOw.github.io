@@ -57,4 +57,4 @@ class Tree{
 
 }
 
-export {Tree};
+export {Tree as default};

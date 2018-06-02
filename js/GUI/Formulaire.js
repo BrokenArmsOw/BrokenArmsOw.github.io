@@ -21,4 +21,4 @@ class Formulaire extends Composant {
 
 }
 
-export {Formulaire};
+export {Formulaire as default};

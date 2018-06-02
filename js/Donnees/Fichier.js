@@ -69,4 +69,4 @@ class Fichier{
 
 }
 
-export {Fichier};
+export {Fichier as default};

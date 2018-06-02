@@ -40,4 +40,4 @@ class Connexion{
 
 };
 
-export {Connexion};
+export {Connexion as default};

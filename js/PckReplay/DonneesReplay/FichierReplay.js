@@ -3,7 +3,7 @@
 * Class: FichierReplay
 */
 
-import Fichier from 'js/Donnees/Fichier.js';
+import Fichier from '../../Donnees/Fichier.js';
 
 import Pov from './Pov.js';
 
@@ -104,4 +104,4 @@ class FichierReplay extends Fichier {
 
 }
 
-export {FichierReplay};
+export {FichierReplay as default};

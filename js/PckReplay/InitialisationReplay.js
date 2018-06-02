@@ -47,4 +47,4 @@ class InitialisationReplay extends Initialisation {
 
 }
 
-export {InitialisationReplay};
+export {InitialisationReplay as default};

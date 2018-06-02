@@ -56,4 +56,4 @@ class Tableau extends Composant {
 
 }
 
-export {Tableau};
+export {Tableau as default};
