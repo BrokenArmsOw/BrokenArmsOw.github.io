@@ -61,20 +61,36 @@
       <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/Lib/bootstrap-treeview.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      function chargerScripts(repertoire){
+      let extension = '.js';  
+
+      for(let [dossier, fichiers] of repertoire.entries()){
+        let chemin = repertoire;
+
+        for(let fichier of fichiers){
+          chemin += fichier + extension;
+          let script = document.createElement("script");
+          script.src = chemin;
+          script.type = 'module';
+          document.body.appendChild(script);
+        }
+      } 
+    }
+
+    let repertoire = new Map();
+    repertoire.set('js/',['Sujet,Initialisation,Connexion']);
+    repertoire.set('js/Données/',['Dossier','Fichier']);
+    repertoire.set('js/GUI/',['Composant','Caroussel','CarousselItem','Formulaire','Tableau','Tree','TreeView','ChargementIcon']);
+    repertoire.set('js/PckReplay/DonnéesReplay/',['DossierReplay','FichierReplay','Pov','Video']);
+    repertoire.set('js/PckReplay/',['ControleurReplay','Replay','ConnexionReplay','InitialisationReplay']);
+
+    chargerScripts(repertoire);
+    </script>
+
     <script type="module">
       import InitialisationReplay from './js/PckReplay/InitialisationReplay.js';
-      /*import Initialisation from './js/Initialisation.js';
-
-      let repertoire = new Map();
-      repertoire.set('js/',['Sujet']);
-      repertoire.set('js/Lib/',['bootstrap-treeview']);
-      repertoire.set('js/Données/',['Dossier','Fichier']);
-      repertoire.set('js/GUI/',['Composant','Caroussel','CarousselItem','Formulaire','Tableau','Tree','TreeView','ChargementIcon']);
-      repertoire.set('js/PckReplay/DonnéesReplay/',['DossierReplay','FichierReplay','Pov','Video']);
-      repertoire.set('js/PckReplay/',['ControleurReplay','Replay','ConnexionReplay','InitialisationReplay']);
-     
-      Initialisation.chargerScripts(repertoire);*/
-      
       let init = new InitialisationReplay();
       init.initialiser();
     </script>
