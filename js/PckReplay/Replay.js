@@ -50,11 +50,11 @@ class Replay{
 		$("#videos").show();
 		switch(this.currentAffichage){
 			case AffichageContenu.CAROUSSEL:
-				this.contenu = new Carrousel(creationContenuCaroussel(NomFichier,DatePov,Joueur));
+				this.contenu = new Carrousel(this.creationContenuCaroussel(NomFichier,DatePov,Joueur));
 			break;
 	
 			case AffichageContenu.TABLEAU:
-				this.contenu = new Tableau(creationContenuTableau(NomFichier,DatePov,Joueur));
+				this.contenu = new Tableau(this.creationContenuTableau(NomFichier,DatePov,Joueur));
 			break;
 		}
 
@@ -157,7 +157,7 @@ class Replay{
 						$("#contenu").append($('<div id="menu" class="treeview col-sm-4"><ul id="treeview_list" class="list-group"></ul></div>'));
 						//Recuperer le menu treeview
 						//Creation des données
-						this.menu = new TreeView(creationMenu(),this.clickMenu,this);
+						this.menu = new TreeView(this.creationMenu(),this.clickMenu,this);
 						this.menu.afficher($("#menu")); 
 					}
 				}else{
