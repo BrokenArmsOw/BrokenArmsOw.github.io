@@ -151,25 +151,21 @@ class Replay{
 		}else{
 			
 			let isReady = function() {
-				console.log(this.dossier);
-				if(!this.dossier.getCharger() && !this.dossier.asErreur()){
-				  setTimeout(isReady.bind(this),5000);
+				if(this.dossier.asErreur() || this.dossier.getCharger()){
+					this.chargementIcon.cacher();
+					if(this.dossier.getCharger()){
+						$("#contenu").append($('<div id="menu" class="treeview col-sm-4"><ul id="treeview_list" class="list-group"></ul></div>'));
+						//Recuperer le menu treeview
+						//Creation des données
+						this.menu = new TreeView(creationMenu(),this.clickMenu,this);
+						this.menu.afficher($("#menu")); 
+					}
+				}else{
+					setTimeout(isReady.bind(this),5000);
 				}
+
 			};
 			setTimeout(isReady.bind(this), 5000);
-
-			if(this.dossier.getCharger() || this.dossier.asErreur()){
-				this.chargementIcon.cacher();
-			}
-
-			if(this.dossier.getCharger()){
-				$("#contenu").append($('<div id="menu" class="treeview col-sm-4"><ul id="treeview_list" class="list-group"></ul></div>'));
-
-				//Recuperer le menu treeview
-				//Creation des données
-				this.menu = new TreeView(creationMenu(),this.clickMenu,this);
-				this.menu.afficher($("#menu")); 
-			}
 		}
 		
 		if(this.contenu){

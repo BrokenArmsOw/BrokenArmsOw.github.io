@@ -122,9 +122,11 @@ class DossierReplay extends Dossier {
 				this.fichiers.set(f.name,fichier);
 			}
 			
-			let erreur = false;
+			
 
 			let isReady = function() {
+				let erreur = false;
+
 				for(let [nom, fichier] of this.fichiers.entries()){
 					if(fichier.asErreur()){
 						erreur = true;
@@ -133,15 +135,14 @@ class DossierReplay extends Dossier {
 						setTimeout(isReady.bind(this),5000);
 					}
 				}
+
+				if(erreur){
+					this.erreur = true;
+				}else{
+					this.charger = true;
+				}
 			};
 			setTimeout(isReady.bind(this), 5000);
-
-			if(erreur){
-				this.erreur = true;
-			}else{
-				console.log("fini");
-				this.charger = true;
-			}
 		}else{
 			this.affichageErreur("Erreur: " + reponse.error.message);
 		} 
