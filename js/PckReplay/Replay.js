@@ -72,7 +72,6 @@ class Replay{
 	}
 
 	swapAffichage(event){
-		console.log(event);
 		
 		if (event.target.checked) {
 			this.currentAffichage = AffichageContenu.CAROUSSEL;
@@ -170,7 +169,8 @@ class Replay{
 				if(this.dossier.getCharger()){
 					//Creation des données
 					this.menu = new TreeView(this.creationMenu(),this.clickMenu.bind(this));
-					this.afficher();
+					this.menu.afficher($("#menu"));
+					$("#menu").show();
 				}
 			}else{
 				setTimeout(isReady.bind(this),5000);
@@ -182,11 +182,6 @@ class Replay{
 	};
 
 	afficher(){
-		if(this.menu){
-			$("#menu").show();
-			this.menu.afficher($("#menu")); 
-		}
-
 		if(this.contenu){
 			$("#videos").show();
 			$("#videos_contenu").empty();
