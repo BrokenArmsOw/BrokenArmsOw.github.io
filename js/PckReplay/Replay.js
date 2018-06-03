@@ -163,11 +163,10 @@ class Replay{
 				if(this.dossier.asErreur() || this.dossier.getCharger()){
 					this.chargementIcon.cacher();
 					if(this.dossier.getCharger()){
-						$("#contenu").append($('<div id="menu" class="treeview col-sm-4"><ul id="treeview_list" class="list-group"></ul></div>'));
-						//Recuperer le menu treeview
 						//Creation des données
 						this.menu = new TreeView(this.creationMenu(),this.clickMenu.bind(this));
 						this.menu.afficher($("#menu")); 
+						$("#menu").show();
 					}
 				}else{
 					setTimeout(isReady.bind(this),5000);
@@ -178,8 +177,8 @@ class Replay{
 		}
 		
 		if(this.contenu){
-			if(!$("#videos_contenu").length)
-				$("#contenu").append('<div id="videos" class="col-sm-6"><div id="videos_contenu"></div><label class="switch"><input id="btnSwitchAffichage" type="checkbox" checked><span class="slider"></span></label></div>')
+			if(!$("#videos").is(":hidden"))
+				$("#videos").show();
 
 			$("#videos_contenu").empty();
 			this.contenu.afficher($("#videos_contenu"));

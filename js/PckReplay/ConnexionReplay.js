@@ -36,12 +36,12 @@ class ConnexionReplay extends Connexion {
 			$("#btnConnexion").hide();
 			$("#btnDeconnexion").show();
 
-			$("#main").append($('<div id="contenu" class="row">'));
+			$("#contenu").show();
 			this.mainView.charger();
 		} else {
 			$("#btnConnexion").show();
 			$("#btnDeconnexion").hide(); 
-			$("#main").empty();
+			$("#contenu").hide();
 		} 
 	};
 
