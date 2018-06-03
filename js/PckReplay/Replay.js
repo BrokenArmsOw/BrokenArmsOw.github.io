@@ -109,6 +109,7 @@ class Replay{
 	creationContenuCaroussel(NomFichier,DatePov,Joueur){
 		let f = this.dossier.getFichier(NomFichier);
 		let pov = f.getPov(DatePov);
+		console.log(pov);
 		let videos = pov.getVideos();
 
 		let carousselData = [];

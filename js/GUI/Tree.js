@@ -50,9 +50,7 @@ class Tree{
 			for(let name in DataFathers){
 				item[name] = DataFathers[name];
 			}
-			
-			console.log(item);
-			
+
 			return item;
 		}
 	}
