@@ -49,7 +49,7 @@ class Dossier{
 
 	affichageErreur(Description){
 		this.erreur = true;
-		$("#error").html(Description);
+		$("#main").append($('<h3>'+Description+'</h3>'));
 	};
 
 
