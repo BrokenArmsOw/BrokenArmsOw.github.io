@@ -79,11 +79,8 @@ class Replay{
 			this.currentAffichage = AffichageContenu.TABLEAU;
 		}
 
-		console.log(this.currentAffichage);
-
 		let target = $(".node-selected")[0];
-		
-		if(target.length){
+		if(target != null){
 			let Joueur = target.getAttribute("pov");
 			let DatePov = target.getAttribute("date");
 			let NomFichier = target.getAttribute("fichier");
