@@ -149,7 +149,8 @@ class Replay{
 			$("#menu").empty();
 			this.menu.afficher($("#menu")); 
 		}else{
-
+			console.log("ici");
+			
 			let isReady = function() {
 				if(!this.dossier.getCharger() && !this.dossier.asErreur()){
 				  setTimeout(isReady.bind(this),5000);
