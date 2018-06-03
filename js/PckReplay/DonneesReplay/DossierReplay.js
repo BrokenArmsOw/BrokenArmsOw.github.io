@@ -113,11 +113,11 @@ class DossierReplay extends Dossier {
 		if (!reponse.error) {
 			this.nombreFichiers = reponse.files.length
 	
-			for(i=0;i<this.nombreFichiers;i++){
+			for(let i=0;i<this.nombreFichiers;i++){
 
 				let f = reponse.files[i];
 				let fichier = new FichierReplay(f.id,f.name);
-				
+
 				fichier.recupererContenu();
 				this.fichiers.set(f.name,fichier);
 			}

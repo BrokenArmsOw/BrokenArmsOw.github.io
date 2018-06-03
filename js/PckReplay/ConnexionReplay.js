@@ -18,8 +18,6 @@ class ConnexionReplay extends Connexion {
 	*/
 	connexion(){
 		gapi.auth2.getAuthInstance().signIn();
-
-		
 	};
 
 	/*
