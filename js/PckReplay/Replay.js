@@ -46,8 +46,15 @@ class Replay{
 		window.evenementsClic['btnSwitchAffichage'] = this.swapAffichage.bind(this);
 	}
 
-	clickMenu(NomFichier,DatePov,Joueur){
+	clickMenu(event){
 		$("#videos").show();
+
+		let target = event.target;
+
+  		let Joueur = target.getAttribute("pov");
+  		let DatePov = target.getAttribute("date");
+  		let NomFichier = target.getAttribute("fichier");
+
 		switch(this.currentAffichage){
 			case AffichageContenu.CAROUSSEL:
 				this.contenu = new Caroussel(this.creationContenuCaroussel(NomFichier,DatePov,Joueur));
@@ -79,14 +86,14 @@ class Replay{
 		let root = new Tree(null,"");
 
 		for(let [nom, fichier] of this.dossier.getFichiers().entries()){
-			let sonFichier = new Tree(root,fichier.getNom());
+			let sonFichier = new Tree(root,fichier.getNom(),"fichier");
 			
 			for(let [date, povs] of fichier.getPovs().entries()){
 
-				let sonDate = new Tree(sonFichier,date);
+				let sonDate = new Tree(sonFichier,date,"date");
 
 				for(let [joueur, pov] of povs.entries()){
-					let sonPov = new Tree(sonDate,joueur);
+					let sonPov = new Tree(sonDate,joueur,"pov");
 
 					sonDate.addSon(sonPov);
 				}
@@ -100,7 +107,6 @@ class Replay{
 	}
 
 	creationContenuCaroussel(NomFichier,DatePov,Joueur){
-
 		let f = this.dossier.getFichier(NomFichier);
 		let pov = f.getPov(DatePov);
 		let videos = pov.getVideos();
