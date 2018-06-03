@@ -35,10 +35,12 @@ class ConnexionReplay extends Connexion {
 		if (estConnecter) {
 			$("#btnConnexion").hide();
 			$("#btnDeconnexion").show();
+			$("#contenu").show();
 			this.mainView.charger();
 		} else {
 			$("#btnConnexion").show();
 			$("#btnDeconnexion").hide(); 
+			$("#contenu").hide();
 		} 
 	};
 

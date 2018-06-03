@@ -4,8 +4,8 @@
 */
 
 import Fichier from '../../Donnees/Fichier.js';
-
 import Pov from './Pov.js';
+import Video from './Video.js';
 
 class FichierReplay extends Fichier {
 	constructor(Id,Nom){

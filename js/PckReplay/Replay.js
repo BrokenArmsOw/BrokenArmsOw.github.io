@@ -158,9 +158,11 @@ class Replay{
 
 			setTimeout(isReady.bind(this), 5000);
 
-			if(this.dossier.getCharger()){
+			if(this.dossier.getCharger() || this.dossier.asErreur()){
 				this.chargementIcon.cacher();
+			}
 
+			if(this.dossier.getCharger()){
 				//Recuperer le menu treeview
 				//Creation des données
 				this.menu = new TreeView(creationMenu(),this.clickMenu,this);
