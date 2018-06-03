@@ -93,6 +93,7 @@ class Replay{
 			root.addSon(sonFichier);
 		}
 
+		console.log(root);
 		return root;
 	}
 
