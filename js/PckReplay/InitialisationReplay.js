@@ -16,7 +16,7 @@ class InitialisationReplay extends Initialisation {
 		this.Discovery_Docs = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest","https://sheets.googleapis.com/$discovery/rest?version=v4"];
 		this.Scopes = "https://www.googleapis.com/auth/drive";
 
-		let dossier = new DossierReplay();
+		let dossier = new DossierReplay("Replay");
 		let controleur = new ControleurReplay(dossier);
 		let replay = new Replay(dossier,controleur);
 		controleur.abonne(replay);
