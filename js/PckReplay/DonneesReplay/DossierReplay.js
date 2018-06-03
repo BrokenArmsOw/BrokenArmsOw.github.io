@@ -122,11 +122,14 @@ class DossierReplay extends Dossier {
 			}
 			
 			let ok = false;
+			let erreur = false;
 
-			while(!ok){
+			while(!ok && !erreur){
 				for(let [nom, fichier] of this.fichiers.entries()){
 					if(!fichier.getCharger()){
 						ok = false;
+						if(fichier.asErreur())
+							erreur = true;
 						break;
 					}else{
 						ok = true;
@@ -134,8 +137,11 @@ class DossierReplay extends Dossier {
 				}
 			}
 
-			this.charger = true;
-
+			if(erreur){
+				this.erreur = true;
+			}else{
+				this.charger = true;
+			}
 		}else{
 			this.affichageErreur("Erreur: " + reponse.error.message);
 		} 

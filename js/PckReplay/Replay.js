@@ -150,7 +150,7 @@ class Replay{
 			this.menu.afficher($("#menu")); 
 		}else{
 
-			while(!this.dossier.getCharger()){}
+			while(!this.dossier.getCharger() && !this.dossier.asErreur()){}
 
 			if(this.dossier.getCharger()){
 				this.chargementIcon.cacher();

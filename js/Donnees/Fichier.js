@@ -7,6 +7,7 @@ class Fichier{
 	constructor(){
 		this.id;
 		this.charger = false;
+		this.erreur = false;
 	}
 
 	/*
@@ -27,6 +28,7 @@ class Fichier{
 	};
 
 	affichageErreur(Description){
+		this.erreur = true;
 		$("#error").html(Description);
 	};
 
@@ -66,7 +68,9 @@ class Fichier{
 		this.charger = value;
 	};
 
-
+	asErreur(){
+		return this.erreur;
+	}
 }
 
 export {Fichier as default};

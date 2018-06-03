@@ -7,6 +7,7 @@ class Dossier{
 	constructor(){
 		this.id;
 		this.charger = false;
+		this.erreur = false;
 	}
 
 	/*
@@ -47,6 +48,7 @@ class Dossier{
 	};
 
 	affichageErreur(Description){
+		this.erreur = true;
 		$("#error").html(Description);
 	};
 
@@ -85,6 +87,10 @@ class Dossier{
 	setCharger(value){
 		this.charger = value;
 	};
+
+	asErreur(){
+		return this.erreur;
+	}
 
 
 }
