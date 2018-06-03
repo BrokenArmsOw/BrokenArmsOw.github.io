@@ -87,7 +87,7 @@ class Replay{
 
 			this.generateContenu(NomFichier,DatePov,Joueur);
 		}
-		
+
 		this.afficher();
 	}
 
@@ -168,6 +168,7 @@ class Replay{
 				if(this.dossier.getCharger()){
 					//Creation des données
 					this.menu = new TreeView(this.creationMenu(),this.clickMenu.bind(this));
+					this.afficher();
 				}
 			}else{
 				setTimeout(isReady.bind(this),5000);
@@ -180,15 +181,13 @@ class Replay{
 
 	afficher(){
 		if(this.menu){
-			if($("#menu").is(":hidden"))
-				$("#menu").show();
+			$("#menu").show();
 
 			this.menu.afficher($("#menu")); 
 		}
 
 		if(this.contenu){
-			if($("#videos").is(":hidden"))
-				$("#videos").show();
+			$("#videos").show();
 
 			$("#videos_contenu").empty();
 			this.contenu.afficher($("#videos_contenu"));
