@@ -108,9 +108,8 @@ class Replay{
 
 	creationContenuCaroussel(NomFichier,DatePov,Joueur){
 		let f = this.dossier.getFichier(NomFichier);
-		let pov = f.getPov(DatePov);
-		console.log(pov);
-		let videos = pov.getVideos();
+		let mapPov = f.getPov(DatePov);
+		let videos = mapPov.get(Joueur).getVideos();
 
 		let carousselData = [];
 
@@ -128,8 +127,8 @@ class Replay{
 
 	creationContenuTableau(NomFichier,DatePov,Joueur){
 		let f = this.dossier.getFichier(NomFichier);
-		let pov = f.getPov(DatePov);
-		let videos = pov.getVideos();
+		let mapPov = f.getPov(DatePov);
+		let videos = mapPov.get(Joueur).getVideos();
 
 		let tableauData = [];
 
