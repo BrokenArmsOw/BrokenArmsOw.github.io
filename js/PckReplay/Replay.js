@@ -119,7 +119,7 @@ class Replay{
 			let caption = $("<h3>"+video.getCarte()+"</h3>");
 			let data = video.getBaliseLien();
 
-			carousselData.append(new CarousselItem(caption,data));
+			carousselData.push(new CarousselItem(caption,data));
 		}
 		
 		return carousselData;
@@ -139,7 +139,7 @@ class Replay{
 			let data = video.getBaliseLien();
 			data.append(caption);
 
-			tableauData.append(data);
+			tableauData.push(data);
 		}
 		
 		return tableauData;
