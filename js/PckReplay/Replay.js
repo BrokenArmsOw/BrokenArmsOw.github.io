@@ -72,6 +72,8 @@ class Replay{
 	}
 
 	swapAffichage(event){
+		console.log(event);
+		
 		if (event.target.checked) {
 			this.currentAffichage = AffichageContenu.CAROUSSEL;
 		} else {
@@ -182,13 +184,11 @@ class Replay{
 	afficher(){
 		if(this.menu){
 			$("#menu").show();
-
 			this.menu.afficher($("#menu")); 
 		}
 
 		if(this.contenu){
 			$("#videos").show();
-
 			$("#videos_contenu").empty();
 			this.contenu.afficher($("#videos_contenu"));
 		}
