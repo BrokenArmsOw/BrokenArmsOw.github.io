@@ -72,7 +72,6 @@ class Replay{
 	}
 
 	swapAffichage(event){
-		console.log(event);
 
 		if (event.target.checked) {
 			this.currentAffichage = AffichageContenu.CAROUSSEL;
@@ -80,8 +79,10 @@ class Replay{
 			this.currentAffichage = AffichageContenu.TABLEAU;
 		}
 
+		console.log(this.currentAffichage);
+
 		let target = $(".node-selected")[0];
-		console.log(target);
+		
 		if(target.length){
 			let Joueur = target.getAttribute("pov");
 			let DatePov = target.getAttribute("date");
@@ -184,7 +185,6 @@ class Replay{
 
 	afficher(){
 		if(this.contenu){
-			$("#videos").show();
 			$("#videos_contenu").empty();
 			this.contenu.afficher($("#videos_contenu"));
 		}
