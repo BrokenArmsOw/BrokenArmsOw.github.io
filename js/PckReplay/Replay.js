@@ -72,17 +72,16 @@ class Replay{
 	}
 
 	swapAffichage(event){
-		
+		console.log(event);
+
 		if (event.target.checked) {
 			this.currentAffichage = AffichageContenu.CAROUSSEL;
 		} else {
 			this.currentAffichage = AffichageContenu.TABLEAU;
 		}
 
-		console.log($(".node-selected"));
-
 		let target = $(".node-selected")[0];
-
+		console.log(target);
 		if(target.length){
 			let Joueur = target.getAttribute("pov");
 			let DatePov = target.getAttribute("date");
