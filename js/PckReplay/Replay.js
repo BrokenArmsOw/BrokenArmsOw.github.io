@@ -149,7 +149,6 @@ class Replay{
 			$("#menu").empty();
 			this.menu.afficher($("#menu")); 
 		}else{
-			console.log("ici");
 			
 			let isReady = function() {
 				if(!this.dossier.getCharger() && !this.dossier.asErreur()){
@@ -159,11 +158,14 @@ class Replay{
 			};
 			setTimeout(isReady.bind(this), 5000);
 
+			console.log("ici");
 			if(this.dossier.getCharger() || this.dossier.asErreur()){
 				this.chargementIcon.cacher();
 			}
 
 			if(this.dossier.getCharger()){
+				$("#contenu").append($('<div id="menu" class="treeview col-sm-4"><ul id="treeview_list" class="list-group"></ul></div>'));
+
 				//Recuperer le menu treeview
 				//Creation des données
 				this.menu = new TreeView(creationMenu(),this.clickMenu,this);
@@ -172,8 +174,8 @@ class Replay{
 		}
 		
 		if(this.contenu){
-			if($("#videos_contenu").is( ":hidden" ))
-				$("#videos_contenu").show();
+			if(!$("#videos_contenu").length)
+				$("#contenu").append('<div id="videos" class="col-sm-6"><div id="videos_contenu"></div><label class="switch"><input id="btnSwitchAffichage" type="checkbox" checked><span class="slider"></span></label></div>')
 
 			$("#videos_contenu").empty();
 			this.contenu.afficher($("#videos_contenu"));
