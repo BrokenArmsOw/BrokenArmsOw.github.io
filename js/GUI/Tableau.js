@@ -34,7 +34,7 @@ class Tableau extends Composant {
 	*/
 	afficher(Location){
 		let tableau = $('<table class="table-responsive"></table>');
-    	let body = $('<tbody></tbody>')
+		let body = $('<tbody></tbody>');
 		let tr = $('<tr></tr>'); 
 		
 		for(let i=0;i<this.data.length;i++){
@@ -48,6 +48,9 @@ class Tableau extends Composant {
 			let td = $('<td"></td>').append(video);
 			tr.append(td);
 		}
+
+		body.append(tr);
+		tableau.append(body);
 
 		Location.append(tableau);
 		this.location = Location;
