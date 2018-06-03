@@ -32,9 +32,9 @@ class Tree{
 				n.push(this.sons[i].getArray(DataFathers,ClickFunc,FunctionObject));
 			}
 
-			item = {text: this.data,tags: [getLength()],nodes:n};
+			item = {text: this.data,tags: [this.getLength()],nodes:n};
 		}else{
-			item = {text: this.data, click: ClickFunc.bind(FunctionObject), tags: [getLength()]};
+			item = {text: this.data, click: ClickFunc.bind(FunctionObject), tags: [this.getLength()]};
 
 			item[this.dataName] = this.data;
 
