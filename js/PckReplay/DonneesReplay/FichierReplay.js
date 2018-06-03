@@ -69,7 +69,7 @@ class FichierReplay extends Fichier {
 		if(!reponse.error){
 			let range = reponse.result;
 	
-			for(i=0;i<range.values.length;i++){
+			for(let i=0;i<range.values.length;i++){
 				let row = range.values[i];
 				let date = row[0];
 				let map = row[1];
