@@ -50,7 +50,7 @@ class Replay{
 		$("#videos").show();
 		switch(this.currentAffichage){
 			case AffichageContenu.CAROUSSEL:
-				this.contenu = new Carrousel(this.creationContenuCaroussel(NomFichier,DatePov,Joueur));
+				this.contenu = new Caroussel(this.creationContenuCaroussel(NomFichier,DatePov,Joueur));
 			break;
 	
 			case AffichageContenu.TABLEAU:
