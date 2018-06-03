@@ -153,6 +153,7 @@ class Replay{
 			let isReady = function() {
 				if(!this.dossier.getCharger() && !this.dossier.asErreur()){
 				  setTimeout(isReady.bind(this),5000);
+				  console.log(this.dossier);
 				}
 			};
 			setTimeout(isReady.bind(this), 5000);
@@ -172,7 +173,7 @@ class Replay{
 		if(this.contenu){
 			if($("#videos_contenu").is( ":hidden" ))
 				$("#videos_contenu").show();
-				
+
 			$("#videos_contenu").empty();
 			this.contenu.afficher($("#videos_contenu"));
 		}

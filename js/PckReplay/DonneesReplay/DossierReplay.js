@@ -136,11 +136,10 @@ class DossierReplay extends Dossier {
 			};
 			setTimeout(isReady.bind(this), 5000);
 
-			console.log("fini");
-
 			if(erreur){
 				this.erreur = true;
 			}else{
+				console.log("fini");
 				this.charger = true;
 			}
 		}else{
