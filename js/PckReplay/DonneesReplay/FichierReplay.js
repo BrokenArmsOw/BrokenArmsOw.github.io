@@ -95,6 +95,7 @@ class FichierReplay extends Fichier {
 				pov.addPov(new Video(map,lien));
 			}
 
+			console.log("fichier lu");
 			this.charger = true;
 		}else{
 			this.affichageErreur('Error: ' + reponse.result.error.message);

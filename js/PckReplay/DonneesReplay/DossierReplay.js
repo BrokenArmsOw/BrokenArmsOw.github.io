@@ -134,8 +134,9 @@ class DossierReplay extends Dossier {
 					}
 				}
 			};
-
 			setTimeout(isReady.bind(this), 5000);
+
+			console.log("fini");
 
 			if(erreur){
 				this.erreur = true;

@@ -155,7 +155,6 @@ class Replay{
 				  setTimeout(isReady.bind(this),5000);
 				}
 			};
-
 			setTimeout(isReady.bind(this), 5000);
 
 			if(this.dossier.getCharger() || this.dossier.asErreur()){
@@ -171,6 +170,9 @@ class Replay{
 		}
 		
 		if(this.contenu){
+			if($("#videos_contenu").is( ":hidden" ))
+				$("#videos_contenu").show();
+				
 			$("#videos_contenu").empty();
 			this.contenu.afficher($("#videos_contenu"));
 		}

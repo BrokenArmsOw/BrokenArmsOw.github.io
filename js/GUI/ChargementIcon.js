@@ -16,7 +16,7 @@ class ChargementIcon extends Composant {
 	*/
 	afficher(Location){
 		let chargementIcon = $('<div id="loader" />');
-		Location.append(chargementIcon);
+		Location.prepend(chargementIcon);
 		
 		this.location = chargementIcon;
 	};
