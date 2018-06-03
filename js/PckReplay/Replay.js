@@ -39,7 +39,7 @@ class Replay{
 		this.chargementIcon = new ChargementIcon();
 		this.chargementIcon.afficher($("#contenu"));
 		
-		initialiserBouton();
+		this.initialiserBouton();
 	};
 
 	initialiserBouton(){
