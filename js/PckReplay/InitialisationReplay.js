@@ -4,8 +4,10 @@
 */
 
 import Initialisation from '../Initialisation.js';
-
 import ConnexionReplay from './ConnexionReplay.js';
+import Replay from './Replay.js';
+import ControleurReplay from './ControleurReplay.js';
+import DossierReplay from './DonneesReplay/DossierReplay.js';
 
 class InitialisationReplay extends Initialisation {
 	constructor(){

@@ -14,7 +14,7 @@ class Sujet{
 	*
 	*/
 	abonne(o){
-		this.obs.append(o);
+		this.obs.push(o);
 	};
 
 	/*

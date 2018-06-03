@@ -4,11 +4,8 @@
 */
 
 import Connexion from '../Connexion.js';
-
 import Replay from './Replay.js';
-
 import ControleurReplay from './ControleurReplay.js';
-
 import DossierReplay from './DonneesReplay/DossierReplay.js';
 
 class ConnexionReplay extends Connexion {

@@ -39,7 +39,7 @@ class Initialisation{
 	/*
 	*/
 	initialiserGoogleApi(){
-		gapi.load('client:auth2', this.initialiserClient); 
+		gapi.load('client:auth2', this.initialiserClient.bind(this)); 
 	};
 
 
@@ -47,13 +47,13 @@ class Initialisation{
 	*/
 	initialiserClient(){
 		gapi.client.init({
-			apiKey: API_KEY,
-			clientId: CLIENT_ID,
-			discoveryDocs: DISCOVERY_DOCS,
-			scope: SCOPES
+			apiKey: this.Api_Key,
+			clientId: this.Client_Id,
+			discoveryDocs: this.Discovery_Docs,
+			scope: this.Scopes
 		}).then(function () {
 			// Listen for sign-in state changes.
-			gapi.auth2.getAuthInstance().isSignedIn.listen(this.connexion.miseAJourStatus);
+			gapi.auth2.getAuthInstance().isSignedIn.listen(this.connexion.miseAJourStatus.bind(this.connexion));
 
 			// Handle the initial sign-in state.
 			this.connexion.miseAJourStatus(gapi.auth2.getAuthInstance().isSignedIn.get());

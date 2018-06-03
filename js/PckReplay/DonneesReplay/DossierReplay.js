@@ -4,7 +4,6 @@
 */
 
 import Dossier from '../../Donnees/Dossier.js';
-
 import FichierReplay from './FichierReplay.js';
 
 class DossierReplay extends Dossier {
