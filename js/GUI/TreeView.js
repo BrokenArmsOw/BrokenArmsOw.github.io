@@ -19,6 +19,7 @@ class TreeView extends Composant {
 	/*
 	*/
 	afficher(Location){
+		console.log(this.data.getArray(new Object(),this.funcClick,this.functionObject));
 
 		Location.treeview({
 			color: "#428bca",
