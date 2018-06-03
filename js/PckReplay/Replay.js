@@ -46,15 +46,7 @@ class Replay{
 		window.evenementsClic['btnSwitchAffichage'] = this.swapAffichage.bind(this);
 	}
 
-	clickMenu(event){
-		$("#videos").show();
-
-		let target = event.target;
-
-  		let Joueur = target.getAttribute("pov");
-  		let DatePov = target.getAttribute("date");
-  		let NomFichier = target.getAttribute("fichier");
-
+	generateContenu(NomFichier,DatePov,Joueur){
 		switch(this.currentAffichage){
 			case AffichageContenu.CAROUSSEL:
 				this.contenu = new Caroussel(this.creationContenuCaroussel(NomFichier,DatePov,Joueur));
@@ -64,21 +56,38 @@ class Replay{
 				this.contenu = new Tableau(this.creationContenuTableau(NomFichier,DatePov,Joueur));
 			break;
 		}
+	}
 
+	clickMenu(event){
+		$("#videos").show();
+
+		let target = event.target;
+
+  		let Joueur = target.getAttribute("pov");
+  		let DatePov = target.getAttribute("date");
+  		let NomFichier = target.getAttribute("fichier");
+
+		this.generateContenu(NomFichier,DatePov,Joueur);
 		this.afficher();
 	}
 
-	swapAffichage(){
-		switch(this.currentAffichage){
-			case AffichageContenu.CAROUSSEL:
-				this.currentAffichage = AffichageContenu.TABLEAU;
-			break;
-	
-			case AffichageContenu.TABLEAU:
-				this.currentAffichage = AffichageContenu.CAROUSSEL;
-			break;
+	swapAffichage(event){
+		if (event.target.checked) {
+			this.currentAffichage = AffichageContenu.CAROUSSEL;
+		} else {
+			this.currentAffichage = AffichageContenu.TABLEAU;
 		}
 
+		let target = $(".node-selected")[0];
+
+		if(target.length){
+			let Joueur = target.getAttribute("pov");
+			let DatePov = target.getAttribute("date");
+			let NomFichier = target.getAttribute("fichier");
+
+			this.generateContenu(NomFichier,DatePov,Joueur);
+		}
+		
 		this.afficher();
 	}
 
@@ -150,34 +159,35 @@ class Replay{
 	*
 	*/
 	miseAJour(exped){
+		$("#menu").empty();
+		$("#videos_contenu").empty();
+
+		let isReady = function() {
+			if(this.dossier.asErreur() || this.dossier.getCharger()){
+				this.chargementIcon.cacher();
+				if(this.dossier.getCharger()){
+					//Creation des données
+					this.menu = new TreeView(this.creationMenu(),this.clickMenu.bind(this));
+				}
+			}else{
+				setTimeout(isReady.bind(this),5000);
+			}
+		};
+		setTimeout(isReady.bind(this), 5000);
+		
 		this.afficher();
 	};
 
 	afficher(){
 		if(this.menu){
-			$("#menu").empty();
-			this.menu.afficher($("#menu")); 
-		}else{
-			
-			let isReady = function() {
-				if(this.dossier.asErreur() || this.dossier.getCharger()){
-					this.chargementIcon.cacher();
-					if(this.dossier.getCharger()){
-						//Creation des données
-						this.menu = new TreeView(this.creationMenu(),this.clickMenu.bind(this));
-						this.menu.afficher($("#menu")); 
-						$("#menu").show();
-					}
-				}else{
-					setTimeout(isReady.bind(this),5000);
-				}
+			if($("#menu").is(":hidden"))
+				$("#menu").show();
 
-			};
-			setTimeout(isReady.bind(this), 5000);
+			this.menu.afficher($("#menu")); 
 		}
-		
+
 		if(this.contenu){
-			if(!$("#videos").is(":hidden"))
+			if($("#videos").is(":hidden"))
 				$("#videos").show();
 
 			$("#videos_contenu").empty();
