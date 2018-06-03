@@ -17,6 +17,7 @@ class ConnexionReplay extends Connexion {
 	/*
 	*/
 	connexion(){
+		console.log(this);
 		$("#btnConnexion").hide();
 		$("#btnDeconnexion").show();
 

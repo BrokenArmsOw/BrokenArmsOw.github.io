@@ -8,11 +8,12 @@ import Tree from './Tree.js';
 import Composant from './Composant.js';
 
 class TreeView extends Composant {
-	constructor(Root,FunctionClick){
+	constructor(Root,FunctionClick,FunctionObject){
 		super();
 
 		this.data = Root;
-		this.funcClick = FunctionClick; 
+		this.funcClick = FunctionClick;
+		this.funcObject = FunctionObject;
 	}
 
 	/*
@@ -22,7 +23,7 @@ class TreeView extends Composant {
 		Location.treeview({
 			color: "#428bca",
 			showBorder: false,
-			data: this.data.getArray(new Object(),this.funcClick)
+			data: this.data.getArray(new Object(),this.funcClick,this.functionObject)
 		});
 
 		this.location = Location;

@@ -43,7 +43,7 @@ class Replay{
 	};
 
 	initialiserBouton(){
-		window.evenementsClic['btnSwitchAffichage'] = this.swapAffichage;
+		window.evenementsClic['btnSwitchAffichage'] = this.swapAffichage.bind(this);
 	}
 
 	clickMenu(NomFichier,DatePov,Joueur){
@@ -155,7 +155,7 @@ class Replay{
 	
 					//Recuperer le menu treeview
 					//Creation des données
-					this.menu = new TreeView(creationMenu(),this.clickMenu);
+					this.menu = new TreeView(creationMenu(),this.clickMenu,this);
 				}else{
 					setTimeout(isReady,5000);
 				}

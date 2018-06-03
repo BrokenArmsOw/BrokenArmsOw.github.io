@@ -38,8 +38,8 @@ class InitialisationReplay extends Initialisation {
 	initialiserBoutonConnexion(){
 		//Création d'un tableau associant l'id d'un élément et la fonction à appeler en cas de clic sur cet élement
 		window.evenementsClic = {
-			'btnConnexion' : this.connexion.connexion,
-			'btnDeconnexion' : this.connexion.deconnexion,
+			'btnConnexion' : this.connexion.connexion.bind(this.connexion),
+			'btnDeconnexion' : this.connexion.deconnexion.bind(this.connexion),
 		};
 
 		//Ajout d'un écouteur d'événement onClick sur la page
