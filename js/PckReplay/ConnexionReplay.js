@@ -17,17 +17,15 @@ class ConnexionReplay extends Connexion {
 	/*
 	*/
 	connexion(){
-		$("#btnConnexion").hide();
-		$("#btnDeconnexion").show();
+		gapi.auth2.getAuthInstance().signIn();
 
-		this.mainView.charger();
+		
 	};
 
 	/*
 	*/
 	deconnexion(){
-		$("#btnConnexion").show();
-		$("#btnDeconnexion").hide(); 
+		gapi.auth2.getAuthInstance().signOut();
 	};
 
 
@@ -37,9 +35,12 @@ class ConnexionReplay extends Connexion {
 	*/
 	miseAJourStatus(estConnecter){
 		if (estConnecter) {
-			this.connexion();
+			$("#btnConnexion").hide();
+			$("#btnDeconnexion").show();
+			this.mainView.charger();
 		} else {
-			this.deconnexion();
+			$("#btnConnexion").show();
+			$("#btnDeconnexion").hide(); 
 		} 
 	};
 
