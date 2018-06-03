@@ -150,7 +150,15 @@ class Replay{
 			this.menu.afficher($("#menu")); 
 		}else{
 
-			while(!this.dossier.getCharger() && !this.dossier.asErreur()){console.log("wait");}
+			let isReady = function() {
+				if(!this.dossier.getCharger() && !this.dossier.asErreur()){
+				  setTimeout(isReady.bind(this),5000);
+				}
+			  };
+
+			setTimeout(isReady.bind(this), 5000);
+
+			/*while(!this.dossier.getCharger() && !this.dossier.asErreur()){console.log("wait");}*/
 
 			if(this.dossier.getCharger()){
 				this.chargementIcon.cacher();
