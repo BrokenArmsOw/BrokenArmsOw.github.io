@@ -151,14 +151,13 @@ class Replay{
 		}else{
 			
 			let isReady = function() {
+				console.log(this.dossier);
 				if(!this.dossier.getCharger() && !this.dossier.asErreur()){
 				  setTimeout(isReady.bind(this),5000);
-				  console.log(this.dossier);
 				}
 			};
 			setTimeout(isReady.bind(this), 5000);
 
-			console.log("ici");
 			if(this.dossier.getCharger() || this.dossier.asErreur()){
 				this.chargementIcon.cacher();
 			}
