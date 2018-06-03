@@ -97,7 +97,7 @@ class FichierReplay extends Fichier {
 
 			this.charger = true;
 		}else{
-			this.AffichageErreur('Error: ' + reponse.result.error.message);
+			this.affichageErreur('Error: ' + reponse.result.error.message);
 		}
 	};
 

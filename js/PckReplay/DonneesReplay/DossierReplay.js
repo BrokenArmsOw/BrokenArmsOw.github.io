@@ -89,7 +89,7 @@ class DossierReplay extends Dossier {
 			this.id = folder.id;
 			this.recupererFichiers();
 		}else{
-			this.AffichageErreur("Erreur: " + reponse.error.message);
+			this.affichageErreur("Erreur: " + reponse.error.message);
 		} 
 	};
 
@@ -119,21 +119,25 @@ class DossierReplay extends Dossier {
 				let fichier = new FichierReplay(f.id,f.name);
 				fichier.recupererContenu();
 				this.fichiers.set(f.name,fichier);
-			} 
+			}
+			
+			let ok = false;
 
-			let isReady = function() {
+			while(!ok){
 				for(let [nom, fichier] of this.fichiers.entries()){
 					if(!fichier.getCharger()){
-						setTimeout(isReady,1000);
+						ok = false;
+						break;
+					}else{
+						ok = true;
 					}
 				}
 			}
-			setTimeout(isReady, 1000); 
 
 			this.charger = true;
 
 		}else{
-			this.AffichageErreur("Erreur: " + reponse.error.message);
+			this.affichageErreur("Erreur: " + reponse.error.message);
 		} 
 
 	};

@@ -149,20 +149,17 @@ class Replay{
 			$("#menu").empty();
 			this.menu.afficher($("#menu")); 
 		}else{
-			let isReady = function() {
-				if(this.dossier.getCharger()){
-					this.chargementIcon.cacher();
-	
-					//Recuperer le menu treeview
-					//Creation des données
-					this.menu = new TreeView(creationMenu(),this.clickMenu,this);
-				}else{
-					setTimeout(isReady,5000);
-				}
-			};
-	
-			setTimeout(isReady, 5000); 
-			this.menu.afficher($("#menu")); 
+
+			while(!this.dossier.getCharger()){}
+
+			if(this.dossier.getCharger()){
+				this.chargementIcon.cacher();
+
+				//Recuperer le menu treeview
+				//Creation des données
+				this.menu = new TreeView(creationMenu(),this.clickMenu,this);
+				this.menu.afficher($("#menu")); 
+			}
 		}
 		
 		if(this.contenu){
