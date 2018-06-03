@@ -21,7 +21,7 @@ class Tree{
 	}
 
 	getArray(DataFathers,ClickFunc,FunctionObject){
-		let item;
+		let arrayTree = [];
 
 		if(this.sons.length !=0){
 			let n = [];
@@ -32,18 +32,22 @@ class Tree{
 				n.push(this.sons[i].getArray(DataFathers,ClickFunc,FunctionObject));
 			}
 
-			item = {text: this.data,tags: [this.getLength()],nodes:n};
+			let item = {text: this.data,tags: [this.getLength()],nodes:n};
+
+			arrayTree.push(item);
 		}else{
-			item = {text: this.data, click: ClickFunc.bind(FunctionObject), tags: [this.getLength()]};
+			let item = {text: this.data, click: ClickFunc.bind(FunctionObject), tags: [this.getLength()]};
 
 			item[this.dataName] = this.data;
 
 			for(let name in DataFathers){
 				item[name] = DataFathers[name];
 			}
+			
+			arrayTree.push(item);
 		}
 
-		return item;
+		return arrayTree;
 	}
 
 	getLength(){
