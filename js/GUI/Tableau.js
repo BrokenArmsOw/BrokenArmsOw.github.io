@@ -37,7 +37,7 @@ class Tableau extends Composant {
     	let body = $('<tbody></tbody>')
 		let tr = $('<tr></tr>'); 
 		
-		for(i=0;i<this.data.length;i++){
+		for(let i=0;i<this.data.length;i++){
 			let video = data[i];
 	
 			if(i%3 == 0 && i!=0){

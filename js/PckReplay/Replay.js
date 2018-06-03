@@ -79,6 +79,8 @@ class Replay{
 			this.currentAffichage = AffichageContenu.TABLEAU;
 		}
 
+		console.log($(".node-selected"));
+
 		let target = $(".node-selected")[0];
 
 		if(target.length){
