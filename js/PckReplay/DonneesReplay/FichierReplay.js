@@ -8,9 +8,9 @@ import Fichier from '../../Donnees/Fichier.js';
 import Pov from './Pov.js';
 
 class FichierReplay extends Fichier {
-	constructor(){
-		super();
-		this.nom;
+	constructor(Id,Nom){
+		super(Id);
+		this.nom = Nom;
 		this.nombrePov;
 		this.povs = new Map();
 	}

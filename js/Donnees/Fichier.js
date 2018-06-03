@@ -4,8 +4,8 @@
 */
 
 class Fichier{
-	constructor(){
-		this.id;
+	constructor(Id){
+		this.id = Id;
 		this.charger = false;
 		this.erreur = false;
 	}

@@ -7,9 +7,9 @@ import Dossier from '../../Donnees/Dossier.js';
 import FichierReplay from './FichierReplay.js';
 
 class DossierReplay extends Dossier {
-	constructor(){
+	constructor(Nom){
 		super();
-		this.nom;
+		this.nom = Nom;
 		this.nombreFichiers;
 		this.fichiers = new Map();
 	}
@@ -117,28 +117,25 @@ class DossierReplay extends Dossier {
 
 				let f = reponse.files[i];
 				let fichier = new FichierReplay(f.id,f.name);
+				
 				fichier.recupererContenu();
 				this.fichiers.set(f.name,fichier);
 			}
 			
-			let ok = false;
 			let erreur = false;
-			console.log("test");
 
-			while(!ok && !erreur){
+			let isReady = function() {
 				for(let [nom, fichier] of this.fichiers.entries()){
-					if(!fichier.getCharger()){
-						ok = false;
-						if(fichier.asErreur())
-							erreur = true;
+					if(fichier.asErreur()){
+						erreur = true;
 						break;
-					}else{
-						ok = true;
+					}else if(!fichier.getCharger()){
+						setTimeout(isReady.bind(this),5000);
 					}
 				}
-			}
+			};
 
-			console.log("test2");
+			setTimeout(isReady.bind(this), 5000);
 
 			if(erreur){
 				this.erreur = true;
