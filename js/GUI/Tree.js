@@ -20,12 +20,12 @@ class Tree{
 		return this.data;
 	}
 
-	getArray(DataFathers,ClickFunc,FunctionObject){
+	getArray(DataFathers,ClickFunc){
 		if(this.father == null){
 			let n = [];
 
 			for(let i=0;i<this.sons.length;i++){
-				n.push(this.sons[i].getArray(DataFathers,ClickFunc,FunctionObject));
+				n.push(this.sons[i].getArray(DataFathers,ClickFunc));
 			}
 
 			return n;
@@ -36,14 +36,14 @@ class Tree{
 			DataFathers[this.dataName] = this.data;
 
 			for(let i=0;i<this.sons.length;i++){
-				n.push(this.sons[i].getArray(DataFathers,ClickFunc,FunctionObject));
+				n.push(this.sons[i].getArray(DataFathers,ClickFunc));
 			}
 
 			let item = {text: this.data,tags: [this.getLength()],nodes:n};
 
 			return item;
 		}else{
-			let item = {text: this.data, click: ClickFunc.bind(FunctionObject), tags: [this.getLength()]};
+			let item = {text: this.data, click: ClickFunc, tags: [this.getLength()]};
 
 			item[this.dataName] = this.data;
 

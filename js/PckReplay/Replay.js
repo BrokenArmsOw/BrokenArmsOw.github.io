@@ -160,7 +160,7 @@ class Replay{
 						$("#contenu").append($('<div id="menu" class="treeview col-sm-4"><ul id="treeview_list" class="list-group"></ul></div>'));
 						//Recuperer le menu treeview
 						//Creation des données
-						this.menu = new TreeView(this.creationMenu(),this.clickMenu,this);
+						this.menu = new TreeView(this.creationMenu(),this.clickMenu.bind(this));
 						this.menu.afficher($("#menu")); 
 					}
 				}else{

@@ -8,23 +8,20 @@ import Tree from './Tree.js';
 import Composant from './Composant.js';
 
 class TreeView extends Composant {
-	constructor(Root,FunctionClick,FunctionObject){
+	constructor(Root,FunctionClick){
 		super();
 
 		this.data = Root;
 		this.funcClick = FunctionClick;
-		this.funcObject = FunctionObject;
 	}
 
 	/*
 	*/
 	afficher(Location){
-		console.log(this.data.getArray(new Object(),this.funcClick,this.functionObject));
-
 		Location.treeview({
 			color: "#428bca",
 			showBorder: false,
-			data: this.data.getArray(new Object(),this.funcClick,this.functionObject)
+			data: this.data.getArray(new Object(),this.funcClick)
 		});
 
 		this.location = Location;
