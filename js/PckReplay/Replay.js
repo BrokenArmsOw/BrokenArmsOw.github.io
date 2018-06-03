@@ -78,8 +78,6 @@ class Replay{
 	creationMenu(){
 		let root = new Tree(null,"");
 
-		console.log(this.dossier);
-
 		for(let [nom, fichier] of this.dossier.getFichiers().entries()){
 			let sonFichier = new Tree(root,fichier.getNom());
 			
@@ -89,7 +87,10 @@ class Replay{
 
 				for(let [joueur, pov] of povs.entries()){
 					let sonPov = new Tree(sonDate,joueur);
+
+					sonDate.addSon(sonPov);
 				}
+				sonFichier.addSon(sonDate);
 			}
 
 			root.addSon(sonFichier);
