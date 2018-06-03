@@ -123,6 +123,7 @@ class DossierReplay extends Dossier {
 			
 			let ok = false;
 			let erreur = false;
+			console.log("test");
 
 			while(!ok && !erreur){
 				for(let [nom, fichier] of this.fichiers.entries()){
@@ -136,6 +137,8 @@ class DossierReplay extends Dossier {
 					}
 				}
 			}
+
+			console.log("test2");
 
 			if(erreur){
 				this.erreur = true;
